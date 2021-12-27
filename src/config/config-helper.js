@@ -112,6 +112,8 @@ export function buildSearchOptionsFromConfig() {
     undefined
   );
 
+  // for testing purposes allow any fields
+  /*
   // We can't use url, thumbnail, or title fields unless they're actually
   // in the reuslts.
   if (config.urlField) {
@@ -143,6 +145,7 @@ export function buildSearchOptionsFromConfig() {
       }
     };
   }
+  */
 
   const searchOptions = {};
   searchOptions.result_fields = resultFields;
