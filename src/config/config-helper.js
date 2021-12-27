@@ -1,4 +1,6 @@
 import config from "../config/engine.json";
+import myInitObject from "./myInitObject";
+import displayRuntime from "../App";
 
 /**
  * This file abstracts most logic around the configuration of the Reference UI.
@@ -9,7 +11,12 @@ import config from "../config/engine.json";
  * that end, this file attempts to contain most of that logic to one place.
  */
 
+export function read() {
+  return myInitObject;
+}
+
 export function getConfig() {
+  var t0 = performance.now();
   if (process.env.NODE_ENV === "test") {
     return {};
   }
@@ -23,6 +30,8 @@ export function getConfig() {
   ) {
     return window.appConfig;
   }
+  var t1 = performance.now();
+  console.log("getConfig took " + (t1 - t0) + " milliseconds.");
 
   return {};
 }
@@ -87,6 +96,8 @@ export function stripUnnecessaryResultFields(resultFields) {
 }
 
 export function buildSearchOptionsFromConfig() {
+  var t0 = performance.now();
+
   const config = getConfig();
   const searchFields = (config.searchFields || config.fields || []).reduce(
     (acc, n) => {
@@ -150,6 +161,13 @@ export function buildSearchOptionsFromConfig() {
   const searchOptions = {};
   searchOptions.result_fields = resultFields;
   searchOptions.search_fields = searchFields;
+
+  var t1 = performance.now();
+  global.runtime = t1 - t0;
+  console.log(
+    "Call to buildSearchOptions took " + (t1 - t0) + " milliseconds."
+  );
+
   return searchOptions;
 }
 
