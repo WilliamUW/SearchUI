@@ -11,6 +11,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 var t1 = performance.now();
 console.log("App render took " + (t1 - t0) + " milliseconds.");
 updateRuntime(t0, t1);
+displayRuntime();
 
 export function updateRuntime(t0, t1) {
   global.runtime = t1 - t0;
