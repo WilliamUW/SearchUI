@@ -47,6 +47,8 @@ export function getUrlField() {
 
 export function getThumbnailField() {
   return getConfig().thumbnailField;
+  //return "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg";
+  //return "hi";
 }
 
 export function getFacetFields() {
@@ -73,7 +75,7 @@ export function stripUnnecessaryResultFields(resultFields) {
         "id",
         toLowerCase(getTitleField()),
         toLowerCase(getUrlField()),
-        toLowerCase(getThumbnailField()),
+        toLowerCase(getThumbnailField())
       ].includes(toLowerCase(n))
     ) {
       return acc;
