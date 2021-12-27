@@ -76,8 +76,8 @@ export function getSortFields() {
 
 export function getResultTitle(result) {
   const titleField = getTitleField();
-
-  return result.getSnippet(titleField);
+  return titleField;
+  //return result.getSnippet(titleField);
 }
 
 // Because if a field is configured to display as a "title", we don't want
@@ -118,11 +118,7 @@ export function buildSearchOptionsFromConfig() {
     (acc, n) => {
       acc = acc || {};
       acc[n] = {
-        raw: {},
-        snippet: {
-          size: resultsFieldLength,
-          fallback: true
-        }
+        raw: {}
       };
       return acc;
     },
