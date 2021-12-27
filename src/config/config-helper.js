@@ -12,10 +12,15 @@ import displayRuntime from "../App";
 
 export function getConfig() {
   var t0 = performance.now();
+  var t1 = 0;
   if (process.env.NODE_ENV === "test") {
+    t1 = performance.now();
+    console.log("getConfig took " + (t1 - t0) + " milliseconds.");
     return {};
   }
 
+  t1 = performance.now();
+  console.log("getConfig took " + (t1 - t0) + " milliseconds.");
   if (config.engineName) return config;
 
   if (
@@ -23,7 +28,7 @@ export function getConfig() {
     window.appConfig &&
     window.appConfig.engineName
   ) {
-    var t1 = performance.now();
+    t1 = performance.now();
     console.log("getConfig took " + (t1 - t0) + " milliseconds.");
     return window.appConfig;
   }
@@ -163,7 +168,7 @@ export function buildSearchOptionsFromConfig() {
     "Call to buildSearchOptions took " + (t1 - t0) + " milliseconds."
   );
 
-  global.runtime = t1 - t0;
+  // global.runtime = t1 - t0;
 
   return searchOptions;
 }
