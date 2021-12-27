@@ -25,6 +25,7 @@ import {
   getConfig,
   getFacetFields
 } from "./config/config-helper";
+import { displayRuntime } from ".";
 
 const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
 const connector = new AppSearchAPIConnector({
@@ -44,6 +45,7 @@ const config = {
 };
 
 export default function App() {
+  var t0 = performance.now();
   var result = (
     // searchprovider uses API config from engine.json
     // all imported from "@elastic/react-search-ui"
@@ -95,5 +97,8 @@ export default function App() {
       </WithSearch>
     </SearchProvider>
   );
+  var t1 = performance.now();
+  global.runtime = t1 - t0;
+  displayRuntime();
   return result;
 }
