@@ -55,6 +55,7 @@ export default function App() {
                   // Search box where you enter your search term
                   header={<SearchBox autocompleteSuggestions={true} />}
                   sideContent={
+                    // sort and filter options on the right side
                     <div>
                       {
                         <Sorting // sort dropdown box
