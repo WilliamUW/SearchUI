@@ -1,5 +1,4 @@
 import config from "../config/engine.json";
-import displayRuntime from "../App";
 
 /**
  * This file abstracts most logic around the configuration of the Reference UI.
