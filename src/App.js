@@ -47,7 +47,7 @@ export default function App() {
   return (
     <SearchProvider config={config}>
       <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
-        {({ wasSearched }) => {
+        {({ True }) => {
           return (
             <div className="App">
               <ErrorBoundary>
@@ -55,12 +55,12 @@ export default function App() {
                   header={<SearchBox autocompleteSuggestions={true} />}
                   sideContent={
                     <div>
-                      {wasSearched && (
+                      {
                         <Sorting
                           label={"Sort by"}
                           sortOptions={buildSortOptionsFromConfig()}
                         />
-                      )}
+                      }
                       {getFacetFields().map((field) => (
                         <Facet key={field} field={field} label={field} />
                       ))}
@@ -76,8 +76,8 @@ export default function App() {
                   }
                   bodyHeader={
                     <React.Fragment>
-                      {wasSearched && <PagingInfo />}
-                      {wasSearched && <ResultsPerPage />}
+                      {<PagingInfo />}
+                      {<ResultsPerPage />}
                     </React.Fragment>
                   }
                   bodyFooter={<Paging />}
