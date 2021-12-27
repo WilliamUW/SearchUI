@@ -1,3 +1,4 @@
+var t0 = performance.now();
 import React from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
@@ -42,6 +43,8 @@ const config = {
   apiConnector: connector,
   alwaysSearchOnInitialLoad: true
 };
+var t1 = performance.now();
+console.log("App Import took " + (t1 - t0) + " milliseconds.");
 
 export default function App() {
   return (

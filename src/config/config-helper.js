@@ -15,13 +15,15 @@ export function getConfig() {
   var t1 = 0;
   if (process.env.NODE_ENV === "test") {
     t1 = performance.now();
-    console.log("getConfig took " + (t1 - t0) + " milliseconds.");
+    console.log("getConfig == test took " + (t1 - t0) + " milliseconds.");
     return {};
   }
 
-  t1 = performance.now();
-  console.log("getConfig took " + (t1 - t0) + " milliseconds.");
-  if (config.engineName) return config;
+  if (config.engineName) {
+    t1 = performance.now();
+    console.log("getConfig engine name took " + (t1 - t0) + " milliseconds.");
+    return config;
+  }
 
   if (
     typeof window !== "undefined" &&
@@ -29,11 +31,13 @@ export function getConfig() {
     window.appConfig.engineName
   ) {
     t1 = performance.now();
-    console.log("getConfig took " + (t1 - t0) + " milliseconds.");
+    console.log(
+      "getConfig app config not undefined took " + (t1 - t0) + " milliseconds."
+    );
     return window.appConfig;
   }
   t1 = performance.now();
-  console.log("getConfig took " + (t1 - t0) + " milliseconds.");
+  console.log("getConfig empty took " + (t1 - t0) + " milliseconds.");
   return {};
 }
 
