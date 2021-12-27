@@ -6,7 +6,7 @@ import myInitObject from "./config/myInitObject";
 
 import "./config/global.js";
 
-global.foo = "foo_changed";
+global.foo = "debug_test";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 ReactDOM.render(global.foo, document.getElementById("debugText"));

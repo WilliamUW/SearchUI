@@ -1,5 +1,4 @@
 import config from "../config/engine.json";
-import myInitObject from "./myInitObject";
 import displayRuntime from "../App";
 
 /**
@@ -10,10 +9,6 @@ import displayRuntime from "../App";
  * project, everything related to configuration can largely be thrown away. To
  * that end, this file attempts to contain most of that logic to one place.
  */
-
-export function read() {
-  return myInitObject;
-}
 
 export function getConfig() {
   var t0 = performance.now();
@@ -163,15 +158,17 @@ export function buildSearchOptionsFromConfig() {
   searchOptions.search_fields = searchFields;
 
   var t1 = performance.now();
-  global.runtime = t1 - t0;
   console.log(
     "Call to buildSearchOptions took " + (t1 - t0) + " milliseconds."
   );
+
+  global.runtime = t1 - t0;
 
   return searchOptions;
 }
 
 export function buildFacetConfigFromConfig() {
+  var t0 = performance.now();
   const config = getConfig();
 
   const facets = (config.facets || []).reduce((acc, n) => {
@@ -183,10 +180,16 @@ export function buildFacetConfigFromConfig() {
     return acc;
   }, undefined);
 
+  var t1 = performance.now();
+  console.log(
+    "Call to buildFacetConfigFromConfig took " + (t1 - t0) + " milliseconds."
+  );
+
   return facets;
 }
 
 export function buildSortOptionsFromConfig() {
+  var t0 = performance.now();
   const config = getConfig();
   return [
     {
@@ -205,12 +208,19 @@ export function buildSortOptionsFromConfig() {
         value: sortField,
         direction: "desc"
       });
+      var t1 = performance.now();
+      console.log(
+        "Call to buildSortOptionsFromConfig took " +
+          (t1 - t0) +
+          " milliseconds."
+      );
       return acc;
     }, [])
   ];
 }
 
 export function buildAutocompleteQueryConfig() {
+  var t0 = performance.now();
   const querySuggestFields = getConfig().querySuggestFields;
   if (
     !querySuggestFields ||
@@ -220,6 +230,10 @@ export function buildAutocompleteQueryConfig() {
     return {};
   }
 
+  var t1 = performance.now();
+  console.log(
+    "Call to buildAutocompleteQueryConfig took " + (t1 - t0) + " milliseconds."
+  );
   return {
     suggestions: {
       types: {
