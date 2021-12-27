@@ -9,7 +9,7 @@ import config from "../config/engine.json";
  * that end, this file attempts to contain most of that logic to one place.
  */
 
-var resultSize = 20;
+var resultsFieldLength = 250;
 
 export function getConfig() {
   var t0 = performance.now();
@@ -120,7 +120,7 @@ export function buildSearchOptionsFromConfig() {
       acc[n] = {
         raw: {},
         snippet: {
-          size: resultSize,
+          size: resultsFieldLength,
           fallback: true
         }
       };
@@ -137,7 +137,7 @@ export function buildSearchOptionsFromConfig() {
     resultFields[config.urlField] = {
       raw: {},
       snippet: {
-        size: resultSize,
+        size: resultsFieldLength,
         fallback: true
       }
     };
@@ -147,7 +147,7 @@ export function buildSearchOptionsFromConfig() {
     resultFields[config.thumbnailField] = {
       raw: {},
       snippet: {
-        size: resultSize,
+        size: resultsFieldLength,
         fallback: true
       }
     };
@@ -157,7 +157,7 @@ export function buildSearchOptionsFromConfig() {
     resultFields[config.titleField] = {
       raw: {},
       snippet: {
-        size: resultSize,
+        size: resultsFieldLength,
         fallback: true
       }
     };
@@ -186,7 +186,7 @@ export function buildFacetConfigFromConfig() {
     acc = acc || {};
     acc[n] = {
       type: "value",
-      size: resultSize
+      size: resultsFieldLength
     };
     return acc;
   }, undefined);
