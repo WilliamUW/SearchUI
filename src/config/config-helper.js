@@ -23,11 +23,12 @@ export function getConfig() {
     window.appConfig &&
     window.appConfig.engineName
   ) {
+    var t1 = performance.now();
+    console.log("getConfig took " + (t1 - t0) + " milliseconds.");
     return window.appConfig;
   }
-  var t1 = performance.now();
+  t1 = performance.now();
   console.log("getConfig took " + (t1 - t0) + " milliseconds.");
-
   return {};
 }
 

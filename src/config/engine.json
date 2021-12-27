@@ -26,5 +26,5 @@
   "facets": ["0from", "0to"],
   "sortFields": ["0timestamp", "id"],
   "urlField": "0message_url",
-  "thumbnailField": "0message_url"
+  "thumbnailField": ""
 }
