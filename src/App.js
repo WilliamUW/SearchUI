@@ -52,16 +52,19 @@ export default function App() {
             <div className="App">
               <ErrorBoundary>
                 <Layout
+                  // Search box where you enter your search term
                   header={<SearchBox autocompleteSuggestions={true} />}
                   sideContent={
                     <div>
                       {
-                        <Sorting
+                        <Sorting // sort dropdown box
                           label={"Sort by"}
                           sortOptions={buildSortOptionsFromConfig()}
                         />
                       }
-                      {getFacetFields().map((field) => (
+                      {getFacetFields().map((
+                        field // filter fields
+                      ) => (
                         <Facet key={field} field={field} label={field} />
                       ))}
                     </div>
