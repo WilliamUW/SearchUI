@@ -1,0 +1,30 @@
+{
+  "endpointBase": "https://email-search-deployment.ent.eu-west-1.aws.found.io",
+  "engineName": "test2",
+  "searchKey": "search-eao9b1hkyzoycyzthi6qci8m",
+  "searchFields": [
+    "id",
+    "0timestamp",
+    "0to",
+    "0from",
+    "0message_url",
+    "0subject",
+    "0stripped_text",
+    "0body_plain"
+  ],
+  "resultFields": [
+    "id",
+    "0timestamp",
+    "0to",
+    "0from",
+    "0message_url",
+    "0subject",
+    "0stripped_text",
+    "0body_plain"
+  ],
+  "titleField": "0subject",
+  "facets": ["0from", "0to"],
+  "sortFields": ["0timestamp", "id"],
+  "urlField": "0message_url",
+  "thumbnailField": "0message_url"
+}
