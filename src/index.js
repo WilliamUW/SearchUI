@@ -4,12 +4,13 @@ import App from "./App";
 
 import "./config/global.js";
 
-global.foo = "runtime_debug_test";
+ReactDOM.render(global.debugTextContent, document.getElementById("debugText"));
 
 var t0 = performance.now();
 ReactDOM.render(<App />, document.getElementById("root"));
 var t1 = performance.now();
 console.log("App render took " + (t1 - t0) + " milliseconds.");
+
 updateRuntime(t0, t1);
 displayRuntime();
 
