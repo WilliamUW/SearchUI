@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-import myInitObject from "./config/myInitObject";
-
 import "./config/global.js";
 
 global.foo = "debug_test";

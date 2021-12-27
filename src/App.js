@@ -45,6 +45,8 @@ const config = {
 
 export default function App() {
   var result = (
+    // searchprovider uses API config from engine.json
+    // all imported from "@elastic/react-search-ui"
     <SearchProvider config={config}>
       <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
         {({ True }) => {
