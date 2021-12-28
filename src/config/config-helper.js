@@ -42,9 +42,11 @@ export function getConfig() {
   return {};
 }
 
+/*
 function toLowerCase(string) {
   if (string) return string.toLowerCase();
 }
+*/
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -79,12 +81,17 @@ export function getResultTitle(result) {
   return titleField;
   //return result.getSnippet(titleField);
 }
-
+/*
 // Because if a field is configured to display as a "title", we don't want
 // to display it again in the fields list
 export function stripUnnecessaryResultFields(resultFields) {
-  return Object.keys(resultFields).reduce((acc, n) => {
+  console.log("Strip function called");
+  var t0 = performance.now();
+  var output = Object.keys(resultFields).reduce((acc, n) => {
+    // for every field/key in the email
+    console.log("Acc: " + acc + " | n: " + n);
     if (
+      // if key is part of list (special key)
       [
         "_meta",
         "id",
@@ -93,13 +100,17 @@ export function stripUnnecessaryResultFields(resultFields) {
         toLowerCase(getThumbnailField())
       ].includes(toLowerCase(n))
     ) {
-      return acc;
+      return acc; // return it without changing
     }
-
+    // otherwise, add resultField to output
     acc[n] = resultFields[n];
     return acc;
   }, {});
+  var t1 = performance.now();
+  console.log("stripUnnecessaryResultFields: " + (t1 - t0));
+  return output;
 }
+*/
 
 export function buildSearchOptionsFromConfig() {
   var t0 = performance.now();
