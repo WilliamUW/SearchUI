@@ -16,7 +16,7 @@ import {
 } from "@elastic/react-search-ui";
 import { Layout } from "@elastic/react-search-ui-views";
 
-import "../react-search-ui-views/lib/styles/styles.css";
+import "./react-search-ui-views/lib/styles/styles.css";
 // import "@elastic/react-search-ui-views/lib/styles/styles.css";
 
 import {
