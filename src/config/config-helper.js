@@ -12,6 +12,15 @@ import config from "../config/engine.json";
  */
 
 var resultsFieldLength = 250;
+var facetFieldLength = 50;
+
+// turns field nane into readable form
+// e.g. 0subject turn into Subject
+export function returnReadableField(input) {
+  var string = input;
+  string = string.replace("0", "");
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 export function getConfig() {
   var t0 = performance.now();
@@ -208,15 +217,17 @@ export function buildSearchOptionsFromConfig() {
   return searchOptions;
 }
 
+// Build facet/filters
 export function buildFacetConfigFromConfig() {
   var t0 = performance.now();
   const config = getConfig();
 
   const facets = (config.facets || []).reduce((acc, n) => {
+    console.log(acc);
     acc = acc || {};
     acc[n] = {
       type: "value",
-      size: resultsFieldLength
+      size: facetFieldLength
     };
     return acc;
   }, undefined);

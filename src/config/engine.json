@@ -5,8 +5,8 @@
   "searchFields": ["0from", "0subject", "0body_plain"],
   "resultFields": ["0from", "0subject", "0body_plain", "0message_url"],
   "titleField": "0subject",
-  "facets": ["0from"],
+  "facets": ["0from", "0subject", "0body_plain"],
   "sortFields": ["0timestamp"],
   "urlField": "0message_url",
-  "thumbnailField": "0message_url"
+  "thumbnailField": ""
 }

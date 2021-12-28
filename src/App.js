@@ -77,7 +77,7 @@ export default function App() {
                           field={field}
                           label={field.replace("0", "")}
                           filterType="any"
-                          isFilterable={true}
+                          isFilterable={true} // allows searching within filter
                         />
                       ))}
                     </div>
