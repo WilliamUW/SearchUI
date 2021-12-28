@@ -968,8 +968,9 @@ html {
 .sui-result__image {
 	padding-top: 12px;
 	padding-left: 24px;
-  flex-basis: 220px;
-  content:url(https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg);
+	flex-basis: 220px;
+	/* content:url(./somm-icon.png); */
+	content:url(https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg);
   width: auto;
   height: auto;
   max-width: 10em;

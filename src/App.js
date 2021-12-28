@@ -72,7 +72,13 @@ export default function App() {
                       {getFacetFields().map((
                         field // filter fields
                       ) => (
-                        <Facet key={field} field={field} label={field} />
+                        <Facet
+                          key={field}
+                          field={field}
+                          label={field.replace("0", "")}
+                          filterType="any"
+                          isFilterable={true}
+                        />
                       ))}
                     </div>
                   }

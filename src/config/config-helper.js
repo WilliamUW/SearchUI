@@ -172,18 +172,22 @@ export function buildSearchOptionsFromConfig() {
     };
   }
   */
-
+  /*
   for (const index in truncateFields) {
     if (truncateFields[index]) {
       resultFields[truncateFields[index]] = {
         raw: {},
-        snippet: {
-          size: resultsFieldLength,
-          fallback: true
-        }
+        snippet: {}
       };
     }
   }
+  */
+  resultFields["0body_plain"] = {
+    snippet: {
+      size: resultsFieldLength,
+      fallback: true
+    }
+  };
 
   const searchOptions = {};
   searchOptions.result_fields = resultFields;
