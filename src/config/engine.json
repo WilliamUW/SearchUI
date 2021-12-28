@@ -3,7 +3,7 @@
   "engineName": "test2",
   "searchKey": "search-eao9b1hkyzoycyzthi6qci8m",
   "searchFields": ["0from", "0subject", "0body_plain"],
-  "resultFields": ["0from", "0subject", "0body_plain"],
+  "resultFields": ["0from", "0subject", "0body_plain", "0message_url"],
   "titleField": "0subject",
   "facets": ["0from"],
   "sortFields": ["0timestamp"],
