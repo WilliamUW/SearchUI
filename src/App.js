@@ -25,7 +25,8 @@ import {
   buildSearchOptionsFromConfig,
   buildSortOptionsFromConfig,
   getConfig,
-  getFacetFields
+  getFacetFields,
+  toReadableField
 } from "./config/config-helper";
 import { displayRuntime } from ".";
 
@@ -75,7 +76,7 @@ export default function App() {
                         <Facet
                           key={field}
                           field={field}
-                          label={field.replace("0", "")}
+                          label={toReadableField(field)}
                           filterType="any"
                           isFilterable={true} // allows searching within filter
                         />

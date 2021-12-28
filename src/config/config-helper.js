@@ -16,9 +16,9 @@ var facetFieldLength = 50;
 
 // turns field nane into readable form
 // e.g. 0subject turn into Subject
-export function returnReadableField(input) {
+export function toReadableField(input) {
   var string = input;
-  string = string.replace("0", "");
+  string = string.replace("0", "").replace("_", " ");
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
