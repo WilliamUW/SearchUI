@@ -1,5 +1,7 @@
 import config from "../config/engine.json";
 
+var truncateFields = ["0body_plain", "0body_plain"];
+
 /**
  * This file abstracts most logic around the configuration of the Reference UI.
  *
@@ -63,8 +65,8 @@ export function getUrlField() {
 }
 
 export function getThumbnailField() {
-  return getConfig().thumbnailField;
-  //return "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg";
+  //return getConfig().thumbnailField;
+  return "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg";
   //return "hi";
 }
 
@@ -171,9 +173,23 @@ export function buildSearchOptionsFromConfig() {
   }
   */
 
+  for (const index in truncateFields) {
+    if (truncateFields[index]) {
+      resultFields[truncateFields[index]] = {
+        raw: {},
+        snippet: {
+          size: resultsFieldLength,
+          fallback: true
+        }
+      };
+    }
+  }
+
   const searchOptions = {};
   searchOptions.result_fields = resultFields;
   searchOptions.search_fields = searchFields;
+
+  console.log(resultFields);
 
   var t1 = performance.now();
   console.log(

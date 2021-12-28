@@ -18,11 +18,12 @@
     "0from",
     "0message_url",
     "0subject",
+    "0stripped_text",
     "0body_plain"
   ],
   "titleField": "0subject",
   "facets": ["0from", "0to"],
   "sortFields": ["0timestamp", "id"],
   "urlField": "0message_url",
-  "thumbnailField": ""
+  "thumbnailField": "0message_url"
 }
