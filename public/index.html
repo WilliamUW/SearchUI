@@ -10,6 +10,27 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <title>Somm.ai - Email Search Reference UI</title>
+    <style>
+      #loadingMessageText {
+        width: 10em;
+        height: auto;
+        position: relative;
+        animation-name: example;
+        animation-duration: 2s;
+        text-align: center;
+      }
+
+      @keyframes example {
+        0% {
+          left: 0px;
+          top: 0px;
+        }
+        100% {
+          left: 100%;
+          top: 0px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -19,7 +40,7 @@
     <p id="debugText"></p>
     <p id="runtimeText"></p>
     <div id="root" class="app-container">
-      <p>
+      <p id="loadingMessageText">
         React App currently rendering...
       </p>
     </div>
