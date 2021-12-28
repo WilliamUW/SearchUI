@@ -1,6 +1,6 @@
 import config from "../config/engine.json";
 
-var truncateFields = ["0body_plain"];
+// var truncateFields = ["0body_plain"];
 
 /**
  * This file abstracts most logic around the configuration of the Reference UI.
