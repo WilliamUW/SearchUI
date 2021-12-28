@@ -51,6 +51,7 @@ function toLowerCase(string) {
 */
 
 function capitalizeFirstLetter(string) {
+  string = string.replace("0", "");
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -182,6 +183,8 @@ export function buildSearchOptionsFromConfig() {
     }
   }
   */
+
+  // truncate body field to set length
   resultFields["0body_plain"] = {
     snippet: {
       size: resultsFieldLength,
@@ -217,6 +220,16 @@ export function buildFacetConfigFromConfig() {
     };
     return acc;
   }, undefined);
+  /*
+  const facets = (config.facets || []).reduce((acc, n) => {
+    acc = acc || {};
+    acc[n] = {
+      type: "value",
+      size: resultsFieldLength
+    };
+    return acc;
+  }, undefined);
+  */
 
   var t1 = performance.now();
   console.log(
@@ -237,12 +250,12 @@ export function buildSortOptionsFromConfig() {
     },
     ...(config.sortFields || []).reduce((acc, sortField) => {
       acc.push({
-        name: `${capitalizeFirstLetter(sortField)} ASC`,
+        name: `${capitalizeFirstLetter(sortField)} Ascending`,
         value: sortField,
         direction: "asc"
       });
       acc.push({
-        name: `${capitalizeFirstLetter(sortField)} DESC`,
+        name: `${capitalizeFirstLetter(sortField)} Descending`,
         value: sortField,
         direction: "desc"
       });
