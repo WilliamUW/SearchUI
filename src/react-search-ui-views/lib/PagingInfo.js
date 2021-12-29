@@ -55,7 +55,7 @@ function PagingInfo(_ref) {
       end
     ),
     " ",
-    "out of ",
+    "out of !!lib",
     /*#__PURE__*/ _react.default.createElement("strong", null, totalResults),
     searchTerm &&
       /*#__PURE__*/ _react.default.createElement(
