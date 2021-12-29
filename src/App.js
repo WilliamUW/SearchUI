@@ -18,9 +18,9 @@ import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 
 import {
-  buildAutocompleteQueryConfig,
-  buildFacetConfigFromConfig,
-  buildSearchOptionsFromConfig,
+  buildAutocompleteQueryConfig, // search auto complete
+  buildFacetConfigFromConfig, // filters
+  buildSearchOptionsFromConfig, //
   buildSortOptionsFromConfig,
   getConfig,
   getFacetFields

@@ -9,6 +9,14 @@ import config from "../config/engine.json";
  * that end, this file attempts to contain most of that logic to one place.
  */
 
+var traceOn = true;
+
+export function trace(string) {
+  if (traceOn) {
+    console.log(string);
+  }
+}
+
 export function getConfig() {
   if (process.env.NODE_ENV === "test") {
     return {};
@@ -145,6 +153,13 @@ export function buildSearchOptionsFromConfig() {
   const searchOptions = {};
   searchOptions.result_fields = resultFields;
   searchOptions.search_fields = searchFields;
+
+  trace("Search Fields");
+  trace(searchFields);
+
+  trace("Result Fields");
+  trace(resultFields);
+
   return searchOptions;
 }
 
