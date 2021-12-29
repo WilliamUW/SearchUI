@@ -6,15 +6,41 @@ import { appendClassName } from "./view-helpers";
 
 function PagingInfo(_ref) {
   var className = _ref.className,
-      end = _ref.end,
-      searchTerm = _ref.searchTerm,
-      start = _ref.start,
-      totalResults = _ref.totalResults,
-      rest = _objectWithoutProperties(_ref, ["className", "end", "searchTerm", "start", "totalResults"]);
+    end = _ref.end,
+    searchTerm = _ref.searchTerm,
+    start = _ref.start,
+    totalResults = _ref.totalResults,
+    rest = _objectWithoutProperties(_ref, [
+      "className",
+      "end",
+      "searchTerm",
+      "start",
+      "totalResults"
+    ]);
 
-  return /*#__PURE__*/React.createElement("div", _extends({
-    className: appendClassName("sui-paging-info", className)
-  }, rest), "Showing", " ", /*#__PURE__*/React.createElement("strong", null, start, " - ", end), " ", "out of ", /*#__PURE__*/React.createElement("strong", null, totalResults), searchTerm && /*#__PURE__*/React.createElement(React.Fragment, null, " ", "for: ", /*#__PURE__*/React.createElement("em", null, searchTerm)));
+  return /*#__PURE__*/ React.createElement(
+    "div",
+    _extends(
+      {
+        className: appendClassName("sui-paging-info", className)
+      },
+      rest
+    ),
+    "This is ES Currently Showing",
+    " ",
+    /*#__PURE__*/ React.createElement("strong", null, start, " - ", end),
+    " ",
+    "out of !!ES",
+    /*#__PURE__*/ React.createElement("strong", null, totalResults),
+    searchTerm &&
+      /*#__PURE__*/ React.createElement(
+        React.Fragment,
+        null,
+        " ",
+        "for: ",
+        /*#__PURE__*/ React.createElement("em", null, searchTerm)
+      )
+  );
 }
 
 PagingInfo.propTypes = {

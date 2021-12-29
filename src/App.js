@@ -13,9 +13,9 @@ import {
   Paging,
   Sorting,
   WithSearch
-} from "@elastic/react-search-ui";
-import { Layout } from "@elastic/react-search-ui-views";
-import "@elastic/react-search-ui-views/lib/styles/styles.css";
+} from "./react-search-ui";
+import { Layout } from "./react-search-ui-views";
+import "./react-search-ui-views/lib/styles/styles.css";
 
 import {
   buildAutocompleteQueryConfig,
@@ -62,7 +62,7 @@ export default function App() {
                         />
                       )}
                       {getFacetFields().map((field) => (
-                        <Facet
+                        <Facet // where all the filters are stored
                           key={field}
                           field={field}
                           label={field}
@@ -72,6 +72,7 @@ export default function App() {
                       ))}
                     </div>
                   }
+                  // the results are stored here
                   bodyContent={
                     <Results
                       titleField={getConfig().titleField}

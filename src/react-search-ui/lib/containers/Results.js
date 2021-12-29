@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
@@ -9,19 +9,33 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.ResultsContainer = void 0;
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+var _objectWithoutProperties2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/objectWithoutProperties")
+);
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+var _classCallCheck2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/classCallCheck")
+);
 
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+var _createClass2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/createClass")
+);
 
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+var _inherits2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/inherits")
+);
 
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+var _possibleConstructorReturn2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/possibleConstructorReturn")
+);
 
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _getPrototypeOf2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/getPrototypeOf")
+);
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+var _defineProperty2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/defineProperty")
+);
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -35,20 +49,74 @@ var _2 = require(".");
 
 var _types = require("../types");
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        (0, _defineProperty2.default)(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+  return function _createSuperInternal() {
+    var Super = (0, _getPrototypeOf2.default)(Derived),
+      result;
+    if (hasNativeReflectConstruct) {
+      var NewTarget = (0, _getPrototypeOf2.default)(this).constructor;
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+    return (0, _possibleConstructorReturn2.default)(this, result);
+  };
+}
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
 function getRaw(result, value) {
   if (!result[value] || !result[value].raw) return;
   return result[value].raw;
 }
 
-var ResultsContainer = /*#__PURE__*/function (_Component) {
+var ResultsContainer = /*#__PURE__*/ (function (_Component) {
   (0, _inherits2.default)(ResultsContainer, _Component);
 
   var _super = _createSuper(ResultsContainer);
@@ -58,10 +126,11 @@ var ResultsContainer = /*#__PURE__*/function (_Component) {
     return _super.apply(this, arguments);
   }
 
-  (0, _createClass2.default)(ResultsContainer, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
+  (0, _createClass2.default)(ResultsContainer, [
+    {
+      key: "render",
+      value: function render() {
+        var _this$props = this.props,
           className = _this$props.className,
           clickThroughTags = _this$props.clickThroughTags,
           resultView = _this$props.resultView,
@@ -71,28 +140,44 @@ var ResultsContainer = /*#__PURE__*/function (_Component) {
           urlField = _this$props.urlField,
           thumbnailField = _this$props.thumbnailField,
           view = _this$props.view,
-          rest = (0, _objectWithoutProperties2.default)(_this$props, ["className", "clickThroughTags", "resultView", "results", "shouldTrackClickThrough", "titleField", "urlField", "thumbnailField", "view"]);
-      var View = view || _reactSearchUiViews.Results;
-      var ResultView = resultView || _reactSearchUiViews.Result;
-      return View(_objectSpread({
-        className: className,
-        children: results.map(function (result) {
-          return /*#__PURE__*/_react.default.createElement(_2.Result, {
-            key: "result-".concat(getRaw(result, "id")),
-            titleField: titleField,
-            urlField: urlField,
-            thumbnailField: thumbnailField,
-            view: ResultView,
-            result: result,
-            shouldTrackClickThrough: shouldTrackClickThrough,
-            clickThroughTags: clickThroughTags
-          });
-        })
-      }, rest));
+          rest = (0, _objectWithoutProperties2.default)(_this$props, [
+            "className",
+            "clickThroughTags",
+            "resultView",
+            "results",
+            "shouldTrackClickThrough",
+            "titleField",
+            "urlField",
+            "thumbnailField",
+            "view"
+          ]);
+        var View = view || _reactSearchUiViews.Results;
+        var ResultView = resultView || _reactSearchUiViews.Result;
+        return View(
+          _objectSpread(
+            {
+              className: className,
+              children: results.map(function (result) {
+                return /*#__PURE__*/ _react.default.createElement(_2.Result, {
+                  key: "result-".concat(getRaw(result, "id")),
+                  titleField: titleField,
+                  urlField: urlField,
+                  thumbnailField: thumbnailField,
+                  view: ResultView,
+                  result: result,
+                  shouldTrackClickThrough: shouldTrackClickThrough,
+                  clickThroughTags: clickThroughTags
+                });
+              })
+            },
+            rest
+          )
+        );
+      }
     }
-  }]);
+  ]);
   return ResultsContainer;
-}(_react.Component);
+})(_react.Component);
 
 exports.ResultsContainer = ResultsContainer;
 (0, _defineProperty2.default)(ResultsContainer, "propTypes", {

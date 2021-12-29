@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -7,13 +7,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _extends2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/extends")
+);
 
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _slicedToArray2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/slicedToArray")
+);
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+var _objectWithoutProperties2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/objectWithoutProperties")
+);
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+var _defineProperty2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/defineProperty")
+);
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -23,9 +31,40 @@ var _viewHelpers = require("./view-helpers");
 
 var _FieldValueWrapper = require("./types/FieldValueWrapper");
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        (0, _defineProperty2.default)(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
 
 function getFieldType(result, field, type) {
   if (result[field]) return result[field][type];
@@ -41,13 +80,19 @@ function getSnippet(result, field) {
 
 function htmlEscape(str) {
   if (!str) return "";
-  return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 function getEscapedField(result, field) {
   // Fallback to raw values here, because non-string fields
   // will not have a snippet fallback. Raw values MUST be html escaped.
-  var safeField = getSnippet(result, field) || htmlEscape(getRaw(result, field));
+  var safeField =
+    getSnippet(result, field) || htmlEscape(getRaw(result, field));
   return Array.isArray(safeField) ? safeField.join(", ") : safeField;
 }
 
@@ -61,65 +106,123 @@ function getEscapedFields(result) {
     // vs.
     // FieldValueWrapper: "_metaField: {raw: '1939191'}"
     if (!(0, _FieldValueWrapper.isFieldValueWrapper)(result[field])) return acc;
-    return _objectSpread(_objectSpread({}, acc), {}, (0, _defineProperty2.default)({}, field, getEscapedField(result, field)));
+    return _objectSpread(
+      _objectSpread({}, acc),
+      {},
+      (0, _defineProperty2.default)({}, field, getEscapedField(result, field))
+    );
   }, {});
 }
 
 function Result(_ref) {
   var className = _ref.className,
-      result = _ref.result,
-      onClickLink = _ref.onClickLink,
-      titleField = _ref.titleField,
-      urlField = _ref.urlField,
-      thumbnailField = _ref.thumbnailField,
-      rest = (0, _objectWithoutProperties2.default)(_ref, ["className", "result", "onClickLink", "titleField", "urlField", "thumbnailField"]);
+    result = _ref.result,
+    onClickLink = _ref.onClickLink,
+    titleField = _ref.titleField,
+    urlField = _ref.urlField,
+    thumbnailField = _ref.thumbnailField,
+    rest = (0, _objectWithoutProperties2.default)(_ref, [
+      "className",
+      "result",
+      "onClickLink",
+      "titleField",
+      "urlField",
+      "thumbnailField"
+    ]);
   var fields = getEscapedFields(result);
   var title = getEscapedField(result, titleField);
-  var url = (0, _viewHelpers.getUrlSanitizer)(URL, location)(getRaw(result, urlField));
-  var thumbnail = (0, _viewHelpers.getUrlSanitizer)(URL, location)(getRaw(result, thumbnailField));
-  return /*#__PURE__*/_react.default.createElement("li", (0, _extends2.default)({
-    className: (0, _viewHelpers.appendClassName)("sui-result", className)
-  }, rest), /*#__PURE__*/_react.default.createElement("div", {
-    className: "sui-result__header"
-  }, title && !url && /*#__PURE__*/_react.default.createElement("span", {
-    className: "sui-result__title",
-    dangerouslySetInnerHTML: {
-      __html: title
-    }
-  }), title && url && /*#__PURE__*/_react.default.createElement("a", {
-    className: "sui-result__title sui-result__title-link",
-    dangerouslySetInnerHTML: {
-      __html: title
-    },
-    href: url,
-    onClick: onClickLink,
-    target: "_blank",
-    rel: "noopener noreferrer"
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "sui-result__body"
-  }, thumbnail && /*#__PURE__*/_react.default.createElement("div", {
-    className: "sui-result__image"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: thumbnail,
-    alt: ""
-  })), /*#__PURE__*/_react.default.createElement("ul", {
-    className: "sui-result__details"
-  }, Object.entries(fields).map(function (_ref2) {
-    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-        fieldName = _ref3[0],
-        fieldValue = _ref3[1];
+  var url = (0, _viewHelpers.getUrlSanitizer)(
+    URL,
+    null
+  )(getRaw(result, urlField));
+  var thumbnail = (0, _viewHelpers.getUrlSanitizer)(
+    URL,
+    null
+  )(getRaw(result, thumbnailField));
+  return /*#__PURE__*/ _react.default.createElement(
+    "li",
+    (0, _extends2.default)(
+      {
+        className: (0, _viewHelpers.appendClassName)("sui-result", className)
+      },
+      rest
+    ),
+    /*#__PURE__*/ _react.default.createElement(
+      "div",
+      {
+        className: "sui-result__header"
+      },
+      title &&
+        !url &&
+        /*#__PURE__*/ _react.default.createElement("span", {
+          className: "sui-result__title",
+          dangerouslySetInnerHTML: {
+            __html: title
+          }
+        }),
+      title &&
+        url &&
+        /*#__PURE__*/ _react.default.createElement("a", {
+          className: "sui-result__title sui-result__title-link",
+          dangerouslySetInnerHTML: {
+            __html: title
+          },
+          href: url,
+          onClick: onClickLink,
+          target: "_blank",
+          rel: "noopener noreferrer"
+        })
+    ),
+    /*#__PURE__*/ _react.default.createElement(
+      "div",
+      {
+        className: "sui-result__body"
+      },
+      thumbnail &&
+        /*#__PURE__*/ _react.default.createElement(
+          "div",
+          {
+            className: "sui-result__image"
+          },
+          /*#__PURE__*/ _react.default.createElement("img", {
+            src: thumbnail,
+            alt: ""
+          })
+        ),
+      /*#__PURE__*/ _react.default.createElement(
+        "ul",
+        {
+          className: "sui-result__details"
+        },
+        Object.entries(fields).map(function (_ref2) {
+          var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+            fieldName = _ref3[0],
+            fieldValue = _ref3[1];
 
-    return /*#__PURE__*/_react.default.createElement("li", {
-      key: fieldName
-    }, /*#__PURE__*/_react.default.createElement("span", {
-      className: "sui-result__key"
-    }, fieldName), " ", /*#__PURE__*/_react.default.createElement("span", {
-      className: "sui-result__value",
-      dangerouslySetInnerHTML: {
-        __html: fieldValue
-      }
-    }));
-  }))));
+          return /*#__PURE__*/ _react.default.createElement(
+            "li",
+            {
+              key: fieldName
+            },
+            /*#__PURE__*/ _react.default.createElement(
+              "span",
+              {
+                className: "sui-result__key"
+              },
+              fieldName
+            ),
+            " ",
+            /*#__PURE__*/ _react.default.createElement("span", {
+              className: "sui-result__value",
+              dangerouslySetInnerHTML: {
+                __html: fieldValue
+              }
+            })
+          );
+        })
+      )
+    )
+  );
 }
 
 Result.propTypes = {

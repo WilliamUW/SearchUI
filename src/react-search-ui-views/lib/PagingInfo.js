@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -7,9 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _extends2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/extends")
+);
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+var _objectWithoutProperties2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/objectWithoutProperties")
+);
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -19,14 +23,49 @@ var _viewHelpers = require("./view-helpers");
 
 function PagingInfo(_ref) {
   var className = _ref.className,
-      end = _ref.end,
-      searchTerm = _ref.searchTerm,
-      start = _ref.start,
-      totalResults = _ref.totalResults,
-      rest = (0, _objectWithoutProperties2.default)(_ref, ["className", "end", "searchTerm", "start", "totalResults"]);
-  return /*#__PURE__*/_react.default.createElement("div", (0, _extends2.default)({
-    className: (0, _viewHelpers.appendClassName)("sui-paging-info", className)
-  }, rest), "Showing", " ", /*#__PURE__*/_react.default.createElement("strong", null, start, " - ", end), " ", "out of ", /*#__PURE__*/_react.default.createElement("strong", null, totalResults), searchTerm && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, " ", "for: ", /*#__PURE__*/_react.default.createElement("em", null, searchTerm)));
+    end = _ref.end,
+    searchTerm = _ref.searchTerm,
+    start = _ref.start,
+    totalResults = _ref.totalResults,
+    rest = (0, _objectWithoutProperties2.default)(_ref, [
+      "className",
+      "end",
+      "searchTerm",
+      "start",
+      "totalResults"
+    ]);
+  return /*#__PURE__*/ _react.default.createElement(
+    "div",
+    (0, _extends2.default)(
+      {
+        className: (0, _viewHelpers.appendClassName)(
+          "sui-paging-info",
+          className
+        )
+      },
+      rest
+    ),
+    "Currently Showing",
+    " ",
+    /*#__PURE__*/ _react.default.createElement(
+      "strong",
+      null,
+      start,
+      " - ",
+      end
+    ),
+    " ",
+    "out of ",
+    /*#__PURE__*/ _react.default.createElement("strong", null, totalResults),
+    searchTerm &&
+      /*#__PURE__*/ _react.default.createElement(
+        _react.default.Fragment,
+        null,
+        " ",
+        "for: ",
+        /*#__PURE__*/ _react.default.createElement("em", null, searchTerm)
+      )
+  );
 }
 
 PagingInfo.propTypes = {
