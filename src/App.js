@@ -13,9 +13,9 @@ import {
   Paging,
   Sorting,
   WithSearch
-} from "./react-search-ui";
-import { Layout } from "./react-search-ui-views";
-import "./react-search-ui-views/lib/styles/styles.css";
+} from "@elastic/react-search-ui";
+import { Layout } from "@elastic/react-search-ui-views";
+import "@elastic/react-search-ui-views/lib/styles/styles.css";
 
 import {
   buildAutocompleteQueryConfig,
