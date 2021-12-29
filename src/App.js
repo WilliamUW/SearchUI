@@ -14,6 +14,13 @@ import {
   Sorting,
   WithSearch
 } from "@elastic/react-search-ui";
+
+/*
+import {
+  Results
+} from "./react-search-ui/"
+*/
+
 import { Layout } from "@elastic/react-search-ui-views";
 
 import "./react-search-ui-views/lib/styles/styles.css";
@@ -49,6 +56,7 @@ const config = {
 
 export default function App() {
   var t0 = performance.now();
+  console.log(getConfig());
   var result = (
     // searchprovider uses API config from engine.json
     // all imported from "@elastic/react-search-ui"

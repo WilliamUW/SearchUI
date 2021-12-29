@@ -34,8 +34,8 @@ const ModalApp = () => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <p>Content 1</p>
+        <p>This is a test.</p>
         <p>Some contents...</p>
       </Modal>
     </>
