@@ -2,15 +2,45 @@ import _extends from "@babel/runtime/helpers/extends";
 import _slicedToArray from "@babel/runtime/helpers/slicedToArray";
 import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import _defineProperty from "@babel/runtime/helpers/defineProperty";
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 import PropTypes from "prop-types";
 import React from "react";
 import { appendClassName, getUrlSanitizer } from "./view-helpers";
 import { isFieldValueWrapper } from "./types/FieldValueWrapper";
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
 
 function getFieldType(result, field, type) {
   if (result[field]) return result[field][type];
@@ -26,13 +56,19 @@ function getSnippet(result, field) {
 
 function htmlEscape(str) {
   if (!str) return "";
-  return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 function getEscapedField(result, field) {
   // Fallback to raw values here, because non-string fields
   // will not have a snippet fallback. Raw values MUST be html escaped.
-  var safeField = getSnippet(result, field) || htmlEscape(getRaw(result, field));
+  var safeField =
+    getSnippet(result, field) || htmlEscape(getRaw(result, field));
   return Array.isArray(safeField) ? safeField.join(", ") : safeField;
 }
 
@@ -46,66 +82,118 @@ function getEscapedFields(result) {
     // vs.
     // FieldValueWrapper: "_metaField: {raw: '1939191'}"
     if (!isFieldValueWrapper(result[field])) return acc;
-    return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, field, getEscapedField(result, field)));
+    return _objectSpread(
+      _objectSpread({}, acc),
+      {},
+      _defineProperty({}, field, getEscapedField(result, field))
+    );
   }, {});
 }
 
 function Result(_ref) {
   var className = _ref.className,
-      result = _ref.result,
-      onClickLink = _ref.onClickLink,
-      titleField = _ref.titleField,
-      urlField = _ref.urlField,
-      thumbnailField = _ref.thumbnailField,
-      rest = _objectWithoutProperties(_ref, ["className", "result", "onClickLink", "titleField", "urlField", "thumbnailField"]);
+    result = _ref.result,
+    onClickLink = _ref.onClickLink,
+    titleField = _ref.titleField,
+    urlField = _ref.urlField,
+    thumbnailField = _ref.thumbnailField,
+    rest = _objectWithoutProperties(_ref, [
+      "className",
+      "result",
+      "onClickLink",
+      "titleField",
+      "urlField",
+      "thumbnailField"
+    ]);
 
   var fields = getEscapedFields(result);
   var title = getEscapedField(result, titleField);
-  var url = getUrlSanitizer(URL, location)(getRaw(result, urlField));
-  var thumbnail = getUrlSanitizer(URL, location)(getRaw(result, thumbnailField));
-  return /*#__PURE__*/React.createElement("li", _extends({
-    className: appendClassName("sui-result", className)
-  }, rest), /*#__PURE__*/React.createElement("div", {
-    className: "sui-result__header"
-  }, title && !url && /*#__PURE__*/React.createElement("span", {
-    className: "sui-result__title",
-    dangerouslySetInnerHTML: {
-      __html: title
-    }
-  }), title && url && /*#__PURE__*/React.createElement("a", {
-    className: "sui-result__title sui-result__title-link",
-    dangerouslySetInnerHTML: {
-      __html: title
-    },
-    href: url,
-    onClick: onClickLink,
-    target: "_blank",
-    rel: "noopener noreferrer"
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "sui-result__body"
-  }, thumbnail && /*#__PURE__*/React.createElement("div", {
-    className: "sui-result__image"
-  }, /*#__PURE__*/React.createElement("img", {
-    src: thumbnail,
-    alt: ""
-  })), /*#__PURE__*/React.createElement("ul", {
-    className: "sui-result__details"
-  }, Object.entries(fields).map(function (_ref2) {
-    var _ref3 = _slicedToArray(_ref2, 2),
-        fieldName = _ref3[0],
-        fieldValue = _ref3[1];
+  var url = getUrlSanitizer(URL, null)(getRaw(result, urlField));
+  var thumbnail = getUrlSanitizer(URL, null)(getRaw(result, thumbnailField));
+  return /*#__PURE__*/ React.createElement(
+    "li",
+    _extends(
+      {
+        className: appendClassName("sui-result", className)
+      },
+      rest
+    ),
+    /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        className: "sui-result__header"
+      },
+      title &&
+        !url &&
+        /*#__PURE__*/ React.createElement("span", {
+          className: "sui-result__title",
+          dangerouslySetInnerHTML: {
+            __html: title
+          }
+        }),
+      title &&
+        url &&
+        /*#__PURE__*/ React.createElement("a", {
+          className: "sui-result__title sui-result__title-link",
+          dangerouslySetInnerHTML: {
+            __html: title
+          },
+          href: url,
+          onClick: onClickLink,
+          target: "_blank",
+          rel: "noopener noreferrer"
+        })
+    ),
+    /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        className: "sui-result__body"
+      },
+      thumbnail &&
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            className: "sui-result__image"
+          },
+          /*#__PURE__*/ React.createElement("img", {
+            src: thumbnail,
+            alt: ""
+          })
+        ),
+      /*#__PURE__*/ React.createElement(
+        "ul",
+        {
+          className: "sui-result__details"
+        },
+        Object.entries(fields).map(function (_ref2) {
+          var _ref3 = _slicedToArray(_ref2, 2),
+            fieldName = _ref3[0],
+            fieldValue = _ref3[1];
 
-    return /*#__PURE__*/React.createElement("li", {
-      key: fieldName
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "sui-result__key"
-    }, fieldName), " ", /*#__PURE__*/React.createElement("span", {
-      className: "sui-result__value",
-      dangerouslySetInnerHTML: {
-        __html: fieldValue
-      }
-    }));
-  }))));
+          return /*#__PURE__*/ React.createElement(
+            "li",
+            {
+              key: fieldName
+            },
+            /*#__PURE__*/ React.createElement(
+              "span",
+              {
+                className: "sui-result__key"
+              },
+              fieldName
+            ),
+            " ",
+            /*#__PURE__*/ React.createElement("span", {
+              className: "sui-result__value",
+              dangerouslySetInnerHTML: {
+                __html: fieldValue
+              }
+            })
+          );
+        })
+      )
+    )
+  );
 }
 
 Result.propTypes = {
