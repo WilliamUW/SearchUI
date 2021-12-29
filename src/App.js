@@ -42,6 +42,8 @@ const config = {
   apiConnector: connector,
   alwaysSearchOnInitialLoad: true
 };
+console.log("Config");
+console.log(config);
 
 export default function App() {
   return (
