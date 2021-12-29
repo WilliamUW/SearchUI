@@ -29,7 +29,7 @@ const ModalApp = () => {
         Open Modal
       </Button>
       <Modal
-        title="Basic Modal"
+        title="Test Modal"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}

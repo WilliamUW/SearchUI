@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#000000" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="./dots.css" />
     <title>Somm.ai - Email Search Reference UI</title>
     <style>
       #loadingMessageText {
@@ -42,9 +43,14 @@
     <p id="debugText"></p>
     <p id="runtimeText"></p>
     <div id="root" class="app-container">
-      <h1 id="loadingMessageText">
+      <p id="loadingMessageText">
         React App currently rendering...
-      </h1>
+      </p>
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
     </div>
   </body>
 </html>
