@@ -80,12 +80,16 @@ export default function App() {
                   }
                   // the results are stored here
                   bodyContent={
-                    <Results
-                      titleField={getConfig().titleField}
-                      urlField={getConfig().urlField}
-                      thumbnailField={getConfig().thumbnailField}
-                      shouldTrackClickThrough={true}
-                    />
+                    <div>
+                      <p>Body Content Start</p>
+                      <Results
+                        titleField={getConfig().titleField}
+                        urlField={getConfig().urlField}
+                        thumbnailField={getConfig().thumbnailField}
+                        shouldTrackClickThrough={true}
+                      />
+                      <p>Body Content End</p>
+                    </div>
                   }
                   // Result header (e.g. "showing 1-20 out of 1037")
                   bodyHeader={
