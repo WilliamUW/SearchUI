@@ -63,6 +63,10 @@ export default function App() {
                           sortOptions={buildSortOptionsFromConfig()}
                         />
                       )}
+                      <br />
+                      <br />
+                      <p>Filter by Fields below!</p>
+
                       {getFacetFields().map((field) => (
                         <Facet // where all the filters are stored
                           key={field}
@@ -83,6 +87,7 @@ export default function App() {
                       shouldTrackClickThrough={true}
                     />
                   }
+                  // Result header (e.g. "showing 1-20 out of 1037")
                   bodyHeader={
                     <React.Fragment>
                       {wasSearched && <PagingInfo />}
