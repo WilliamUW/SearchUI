@@ -2,6 +2,18 @@
   "engineName": "more-fields-test-engine-upload",
   "endpointBase": "https://email-us.ent.us-east-1.aws.found.io",
   "searchKey": "search-gsg8smoe6issmbasio89sbog",
+  "searchFields": [
+    "date",
+    "attachments",
+    "stripped_text",
+    "subject",
+    "message_url",
+    "stripped_html",
+    "from",
+    "mailgunattachments",
+    "to",
+    "id"
+  ],
   "resultFields": [
     "date",
     "attachments",
