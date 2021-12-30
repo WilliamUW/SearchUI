@@ -18,6 +18,7 @@
     "date",
     "attachments",
     "stripped_text",
+    "body_html",
     "subject",
     "message_url",
     "stripped_html",

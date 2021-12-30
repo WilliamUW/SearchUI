@@ -57,46 +57,22 @@ const ModalAppTest = (r) => {
 
   // console.log(r);
   r = r.r;
-  /*
-  <Modal
-        id="test"
-        title="Test Modal"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <h1>{r.subject.raw}</h1>
-        <h4>{r.from.raw}</h4>
-        <p>{new Date(r.date.raw).toDateString()}</p>
-        <p>{r.stripped_text.snippet}</p>
-      </Modal>
-      var srcHtml =
-    "<html><div><h1>" +
-    r.subject.raw +
-    "</h1><h4>" +
-    r.from.raw +
-    "</h4><p>" +
-    r.date.raw +
-    "</p><p>" +
-    r.stripped_text.snippet +
-    "</p></div></html>";
-      */
 
-  var bodyHtml = r.stripped_html.raw;
+  var bodyHtml = r.body_html.raw;
 
   return (
     <>
       <Modal
         id="test"
-        title="Test Modal"
+        title="Email Modal"
         style={{ width: "80em" }}
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <h1>{r.subject.raw}</h1>
-        <h4>From: {r.from.raw}</h4>
-        <p>Date: {new Date(r.date.raw).toDateString()}</p>
+        <h1>{r.subject.snippet}</h1>
+        <h4>From: {r.from.snippet}</h4>
+        <p>Date: {new Date(r.date.snippet).toDateString()}</p>
         <iframe
           srcDoc={bodyHtml}
           style={{ width: "35em", height: "20em" }}
@@ -190,7 +166,9 @@ export default function App() {
                               }}
                             >
                               <span>
-                                <strong>{r.from.snippet.split("<")[0]}</strong>
+                                <strong>
+                                  {r.from.snippet.split("&lt")[0]}
+                                </strong>
                               </span>
                               <span style={{ color: "grey" }}>
                                 {r.date.raw}
