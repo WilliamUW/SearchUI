@@ -58,28 +58,64 @@ const ModalAppTest = (r) => {
   console.log(r);
   r = r.r;
 
-  var bodyHtml = r.body_html.raw;
+  var bodyHtml = "";
+  if (r.body_html) {
+    bodyHtml = r.body_html.raw;
+  }
 
   return (
     <>
       <Modal
         id="test"
         title="Email Modal"
-        style={{ width: "80em" }}
+        // style={{ width: "80em" }}
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        width={1000}
+        height={1000}
+        centered
       >
-        <h1>{r.subject.snippet}</h1>
-        <h4>From: {r.from.snippet}</h4>
-        <p>Date: {new Date(r.date.snippet).toDateString()}</p>
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "0"
+          }}
+        >
+          <span>
+            <strong
+              dangerouslySetInnerHTML={{
+                __html: innerFormat(r.from.snippet)
+              }}
+            ></strong>
+          </span>
+          <span
+            style={{ color: "grey" }}
+            dangerouslySetInnerHTML={{
+              __html: innerFormat(r.date.snippet)
+            }}
+          ></span>
+        </p>
+
+        <h3
+          dangerouslySetInnerHTML={{
+            __html: innerFormat(r.subject.snippet)
+          }}
+        ></h3>
+        <p
+          style={{ color: "grey" }}
+          dangerouslySetInnerHTML={{
+            __html: "To: " + innerFormat(r.to.snippet)
+          }}
+        ></p>
         <iframe
           srcDoc={bodyHtml}
-          style={{ width: "35em", height: "20em" }}
+          style={{ width: "100%", height: "30em", display: "block" }}
           title="Test iframe"
           id="iframe"
         ></iframe>
-        <p>{r.mailgunattachments.raw}</p>
+        <p>{r.mailgunattachments ? r.mailgunattachments.raw : ""}</p>
       </Modal>
     </>
   );
@@ -213,9 +249,7 @@ export default function App() {
                             >
                               Open Email Modal
                             </Button>
-                            <div
-                              id={r.id.raw} // style={"padding"=24px}
-                            />
+                            <div id={r.id.raw} />
                             <script>
                               var mountNode =
                               document.getElementById('container');
