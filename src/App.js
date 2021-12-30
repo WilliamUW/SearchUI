@@ -47,19 +47,19 @@ const ModalAppTest = (r) => {
 
   async function handleOk() {
     isModalVisible = false;
-    ReactDOM.render("", document.getElementById("container"));
+    ReactDOM.render("", document.getElementById(r.id.raw));
   }
 
   const handleCancel = () => {
     isModalVisible = false;
-    ReactDOM.render("", document.getElementById("container"));
+    ReactDOM.render("", document.getElementById(r.id.raw));
   };
 
   console.log(r);
   r = r.r;
-  return (
-    <>
-      <Modal
+  /*
+  <Modal
+        id="test"
         title="Test Modal"
         visible={isModalVisible}
         onOk={handleOk}
@@ -69,6 +69,40 @@ const ModalAppTest = (r) => {
         <h4>{r.from.raw}</h4>
         <p>{new Date(r.date.raw).toDateString()}</p>
         <p>{r.stripped_text.snippet}</p>
+      </Modal>
+      */
+  var srcHtml =
+    "<html><div><h1>" +
+    r.subject.raw +
+    "</h1><h4>" +
+    r.from.raw +
+    "</h4><p>" +
+    r.date.raw +
+    "</p><p>" +
+    r.stripped_text.snippet +
+    "</p></div></html>";
+
+  var bodyHtml = r.stripped_html.raw;
+
+  return (
+    <>
+      <Modal
+        id="test"
+        title="Test Modal"
+        style={{ width: "80em" }}
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <h1>{r.subject.raw}</h1>
+        <h4>{r.from.raw}</h4>
+        <p>{new Date(r.date.raw).toDateString()}</p>
+        <iframe
+          srcDoc={bodyHtml}
+          style={{ width: "35em", height: "20em" }}
+          title="Test iframe"
+          id="iframe"
+        ></iframe>
       </Modal>
     </>
   );
@@ -142,9 +176,6 @@ export default function App() {
                       {results.map((r) => (
                         <div key={r.id.raw}>
                           <Card style={{ width: "auto" }}>
-                            {
-                              console.log(r) // log current email
-                            }
                             <h1>{r.subject.raw}</h1>
                             <h2>{r.from.raw}</h2>
                             <p>{r.date.raw}</p>
@@ -157,7 +188,7 @@ export default function App() {
                               Open Email Modal
                             </Button>
                             <div
-                              id="container" // style={"padding"=24px}
+                              id={r.id.raw} // style={"padding"=24px}
                             />
                             <script>
                               var mountNode =
@@ -184,7 +215,6 @@ export default function App() {
                                     <p>Card content 1</p>
                                     <p>Card content 2</p>
                                     <p>Card content 3</p>
-                                    <ModalAppTest />
                                   </Card>
                                 </div>
                               </>
@@ -240,12 +270,9 @@ export default function App() {
   );
 }
 
-export function displayFullEmail(param) {
-  console.log(param);
-  ReactDOM.render(
-    <ModalAppTest r={param} />,
-    document.getElementById("container")
-  );
+export function displayFullEmail(r) {
+  console.log(document.getElementById(r.id.raw));
+  ReactDOM.render(<ModalAppTest r={r} />, document.getElementById(r.id.raw));
 }
 
 /*
