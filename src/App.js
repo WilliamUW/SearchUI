@@ -103,6 +103,10 @@ const config = {
 console.log("Config");
 console.log(config);
 
+export function innerFormat(string) {
+  return string.replace("em", "mark");
+}
+
 export default function App() {
   var wasSearched = true;
   return (
@@ -166,23 +170,35 @@ export default function App() {
                               }}
                             >
                               <span>
-                                <strong>
-                                  {r.from.snippet.split("&lt")[0]}
-                                </strong>
+                                <strong
+                                  dangerouslySetInnerHTML={{
+                                    __html: innerFormat(
+                                      r.from.snippet.split("&lt")[0]
+                                    )
+                                  }}
+                                ></strong>
                               </span>
-                              <span style={{ color: "grey" }}>
-                                {r.date.raw}
-                              </span>
+                              <span
+                                style={{ color: "grey" }}
+                                dangerouslySetInnerHTML={{
+                                  __html: innerFormat(r.date.snippet)
+                                }}
+                              ></span>
                             </p>
 
                             <h3
                               dangerouslySetInnerHTML={{
-                                __html: r.subject.snippet
+                                __html: innerFormat(r.subject.snippet)
                               }}
                             ></h3>
-                            <p style={{ color: "grey" }}>
-                              {r.stripped_text.snippet + "..."}
-                            </p>
+                            <p
+                              style={{ color: "grey" }}
+                              dangerouslySetInnerHTML={{
+                                __html: innerFormat(
+                                  r.stripped_text.snippet + "..."
+                                )
+                              }}
+                            ></p>
 
                             <Button
                               type="primary"
