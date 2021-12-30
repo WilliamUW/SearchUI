@@ -55,7 +55,7 @@ const ModalAppTest = (r) => {
     ReactDOM.render("", document.getElementById(r.id.raw));
   };
 
-  // console.log(r);
+  console.log(r);
   r = r.r;
 
   var bodyHtml = r.body_html.raw;
@@ -104,7 +104,7 @@ console.log("Config");
 console.log(config);
 
 export function innerFormat(string) {
-  return string.replace("em", "mark");
+  return string.replace(/em/g, "mark");
 }
 
 export default function App() {
@@ -194,9 +194,7 @@ export default function App() {
                             <p
                               style={{ color: "grey" }}
                               dangerouslySetInnerHTML={{
-                                __html: innerFormat(
-                                  r.stripped_text.snippet + "..."
-                                )
+                                __html: innerFormat(r.stripped_text.snippet)
                               }}
                             ></p>
 
@@ -293,7 +291,7 @@ export default function App() {
 }
 
 export function displayFullEmail(r) {
-  console.log(document.getElementById(r.id.raw));
+  // console.log(document.getElementById(r.id.raw));
   ReactDOM.render(<ModalAppTest r={r} />, document.getElementById(r.id.raw));
 }
 
