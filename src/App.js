@@ -34,46 +34,32 @@ import { Modal, Button } from "antd";
 
 import { Card } from "antd";
 
-const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
-const connector = new AppSearchAPIConnector({
-  searchKey,
-  engineName,
-  hostIdentifier,
-  endpointBase
-});
-const config = {
-  searchQuery: {
-    facets: buildFacetConfigFromConfig(),
-    ...buildSearchOptionsFromConfig()
-  },
-  autocompleteQuery: buildAutocompleteQueryConfig(),
-  apiConnector: connector,
-  alwaysSearchOnInitialLoad: true
-};
-console.log("Config");
-console.log(config);
-
 // make modal class
 
 const ModalAppTest = (r) => {
   var isModalVisible = true;
+
   /*
   const showModal = () => {
     isModalVisible = true;
   };
   */
-  function handleOk() {
+
+  async function handleOk() {
     isModalVisible = false;
-    //ReactDOM.render("", document.getElementById(r.id.raw));
+    ReactDOM.render("", document.getElementById(r.id.raw));
   }
 
-  function handleCancel() {
+  const handleCancel = () => {
     isModalVisible = false;
-    //ReactDOM.render("", document.getElementById(r.id.raw));
-  }
+    ReactDOM.render("", document.getElementById(r.id.raw));
+  };
+
   console.log(r);
   r = r.r;
+
   var bodyHtml = r.body_html.raw;
+
   return (
     <>
       <Modal
@@ -97,6 +83,25 @@ const ModalAppTest = (r) => {
     </>
   );
 };
+
+const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
+const connector = new AppSearchAPIConnector({
+  searchKey,
+  engineName,
+  hostIdentifier,
+  endpointBase
+});
+const config = {
+  searchQuery: {
+    facets: buildFacetConfigFromConfig(),
+    ...buildSearchOptionsFromConfig()
+  },
+  autocompleteQuery: buildAutocompleteQueryConfig(),
+  apiConnector: connector,
+  alwaysSearchOnInitialLoad: true
+};
+console.log("Config");
+console.log(config);
 
 var displayStringLength = 100;
 
@@ -160,126 +165,70 @@ export default function App() {
                       <br />
 
                       {results.map((r) => (
-                        <div>
-                          <div
-                            key={r.id.raw}
-                            onClick={() => displayFullEmail(r)}
-                            // onClick={() => displayFullEmail(r)}
-                          >
-                            <Card style={{ width: "auto" }}>
-                              <p
-                                style={{
-                                  display: "flex",
-                                  justifyContent: "space-between",
-                                  margin: "0"
-                                }}
-                              >
-                                <span>
-                                  <strong
-                                    dangerouslySetInnerHTML={{
-                                      __html: innerFormat(
-                                        r.from.snippet.split("&lt")[0]
-                                      )
-                                    }}
-                                  ></strong>
-                                </span>
-                                <span
-                                  style={{ color: "grey" }}
+                        <div
+                          key={r.id.raw}
+                          // onClick={() => displayFullEmail(r)}
+                        >
+                          <Card style={{ width: "auto" }}>
+                            <p
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                margin: "0"
+                              }}
+                            >
+                              <span>
+                                <strong
                                   dangerouslySetInnerHTML={{
-                                    __html: innerFormat(r.date.snippet)
+                                    __html: innerFormat(
+                                      r.from.snippet.split("&lt")[0]
+                                    )
                                   }}
-                                ></span>
-                              </p>
-
-                              <h3
-                                dangerouslySetInnerHTML={{
-                                  __html: innerFormat(r.subject.snippet)
-                                }}
-                              ></h3>
-                              <p
+                                ></strong>
+                              </span>
+                              <span
                                 style={{ color: "grey" }}
                                 dangerouslySetInnerHTML={{
-                                  __html: innerFormat(r.stripped_text.snippet)
+                                  __html: innerFormat(r.date.snippet)
                                 }}
-                              ></p>
+                              ></span>
+                            </p>
 
-                              <Button type="primary">Open Email Modal</Button>
-                              <div id={r.id.raw} />
-                              <script>
-                                var mountNode =
-                                document.getElementById('container');
-                              </script>
-                            </Card>
+                            <h3
+                              dangerouslySetInnerHTML={{
+                                __html: innerFormat(r.subject.snippet)
+                              }}
+                            ></h3>
+                            <p
+                              style={{ color: "grey" }}
+                              dangerouslySetInnerHTML={{
+                                __html: innerFormat(r.stripped_text.snippet)
+                              }}
+                            ></p>
 
-                            <br />
-                          </div>
-                          <script>
-                            var mountNode =
-                            document.getElementById('container');
-                          </script>
+                            <Button
+                              type="primary"
+                              onClick={() => displayFullEmail(r)}
+                            >
+                              Open Email Modal
+                            </Button>
+                            <div
+                              id={r.id.raw} // style={"padding"=24px}
+                            />
+                            <script>
+                              var mountNode =
+                              document.getElementById('container');
+                            </script>
+                          </Card>
+                          <br />
                         </div>
                       ))}
+                      <script>
+                        var mountNode = document.getElementById('container');
+                      </script>
                     </div>
-                  }
-                  // Result header (e.g. "showing 1-20 out of 1037")
-                  bodyHeader={
-                    <React.Fragment>
-                      {wasSearched && <PagingInfo />}
-                      {wasSearched && <ResultsPerPage />}
-                    </React.Fragment>
-                  }
-                  bodyFooter={<Paging />}
-                />
-              </ErrorBoundary>
-            </div>
-          );
-        }}
-      </WithSearch>
-    </SearchProvider>
-  );
-}
 
-var trackId = new Map();
-export function displayFullEmail(r) {
-  var id = r.id.raw;
-  console.log("Display FUll EMail called");
-  console.log(document.getElementById(r.id.raw));
-  console.log(document.getElementById(r.id.raw).innerHTML);
-  var isEmpty = trackId.has(id);
-  console.log(isEmpty);
-
-  if (trackId.has(id)) {
-    var count = trackId.get(id);
-    if (count % 2 === 1) {
-      ReactDOM.render("", document.getElementById(r.id.raw));
-      trackId.set(id, 0);
-    } else {
-      ReactDOM.render(
-        <ModalAppTest r={r} />,
-        document.getElementById(r.id.raw)
-      );
-      trackId.set(id, 1);
-    }
-  } else {
-    ReactDOM.render(<ModalAppTest r={r} />, document.getElementById(r.id.raw));
-    trackId.set(id, 1);
-  }
-}
-
-/*
- <div>
-                      <p>Body Content Start</p>
-                      <Results
-                        titleField={getConfig().titleField}
-                        urlField={getConfig().urlField}
-                        thumbnailField={getConfig().thumbnailField}
-                        shouldTrackClickThrough={true}
-                      />
-                      <p>Body Content End</p>
-                    </div>
-                    */
-
-/*
+                    /*
                     <Results
                       view={(results) => {
                         console.log(results);
@@ -303,7 +252,7 @@ export function displayFullEmail(r) {
                       }}
                     />
                     */
-/*
+                    /*
                     <Results
                       view={(wasSearched) => {
                         console.log(wasSearched);
@@ -329,4 +278,40 @@ export function displayFullEmail(r) {
                       }}
                       renderResult={(wasSearched) => <>test render</>}
                     />
+                    */
+                  }
+                  // Result header (e.g. "showing 1-20 out of 1037")
+                  bodyHeader={
+                    <React.Fragment>
+                      {wasSearched && <PagingInfo />}
+                      {wasSearched && <ResultsPerPage />}
+                    </React.Fragment>
+                  }
+                  bodyFooter={<Paging />}
+                />
+              </ErrorBoundary>
+            </div>
+          );
+        }}
+      </WithSearch>
+    </SearchProvider>
+  );
+}
+
+export function displayFullEmail(r) {
+  // console.log(document.getElementById(r.id.raw));
+  ReactDOM.render(<ModalAppTest r={r} />, document.getElementById(r.id.raw));
+}
+
+/*
+ <div>
+                      <p>Body Content Start</p>
+                      <Results
+                        titleField={getConfig().titleField}
+                        urlField={getConfig().urlField}
+                        thumbnailField={getConfig().thumbnailField}
+                        shouldTrackClickThrough={true}
+                      />
+                      <p>Body Content End</p>
+                    </div>
                     */
