@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 
@@ -7,20 +8,13 @@ import {
   Facet,
   SearchProvider,
   SearchBox,
-  Results,
+  //Results,
   PagingInfo,
   ResultsPerPage,
   Paging,
   Sorting,
-  WithSearch,
-  Showing,
-  Filtering,
-  Footer,
-  Header,
-  ModalProvider
+  WithSearch
 } from "@elastic/react-search-ui";
-
-// import { Result } from "./react-search-ui-view/lib/index";
 
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
@@ -34,41 +28,47 @@ import {
   getFacetFields
 } from "./config/config-helper";
 
-import { useState } from "react";
+// import { useState } from "react";
 import "antd/dist/antd.css";
 import { Modal, Button } from "antd";
 
 import { Card } from "antd";
 
-const ModalAppTest = (param) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+// make modal class
 
+const ModalAppTest = (r) => {
+  var isModalVisible = true;
+
+  /*
   const showModal = () => {
-    setIsModalVisible(true);
+    isModalVisible = true;
   };
+  */
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
+  async function handleOk() {
+    isModalVisible = false;
+    ReactDOM.render("", document.getElementById("container"));
+  }
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    isModalVisible = false;
+    ReactDOM.render("", document.getElementById("container"));
   };
 
+  console.log(r);
+  r = r.r;
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Email Modal
-      </Button>
       <Modal
         title="Test Modal"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>Content 1</p>
-        <p>This is a test.</p>
-        <p>Value: {param}</p>
+        <h1>{r.subject.raw}</h1>
+        <h4>{r.from.raw}</h4>
+        <p>{new Date(r.date.raw).toDateString()}</p>
+        <p>{r.stripped_text.snippet}</p>
       </Modal>
     </>
   );
@@ -92,84 +92,17 @@ const config = {
 };
 console.log("Config");
 console.log(config);
-/* game App function
 
 export default function App() {
+  var wasSearched = true;
   return (
-    <SearchProvider config={config}>
-      <ModalProvider>
-        <Header />
-        <Layout
-          bodyContent={<Results view={Games} renderResult={Game} />}
-          sideContent={<Filtering />}
-          bodyHeader={<Showing />}
-          bodyFooter={<Paging />}
-        />
-        <Footer />
-      </ModalProvider>
-    </SearchProvider>
-  );
-}
-*/
-
-export default function App() {
-  var wasSearched = false;
-  return (
-    /*
-    <SearchProvider config={config}>
-      <WithSearch mapContextToProps={({ result }) => ({ result })}>
-        {({ result }) => {
-          console.log("result");
-          console.log(result);
-          return <div className="App"></div>;
-        }}
-      </WithSearch>
-    </SearchProvider>
-    */
-    /* working results
-    <SearchProvider config={config}>
-      <WithSearch
-        mapContextToProps={({ results }) => ({
-          results
-        })}
-      >
-        {({ results }) => {
-          console.log("results");
-          console.log(results);
-          return (
-            <div className="App">
-              {results.map((r) => (
-                <div key={r.id.raw}>
-                  <Card style={{ width: 3000 }}>
-                    {
-                      // console.log(r) // log current email
-                    }
-                    <h1>Email Title {r.subject.raw}</h1>
-                    <h2>Email Subtitle {r.from.raw}</h2>
-                    <p>Card content 1: {r.stripped_text.snippet}</p>
-                    <p>Card content 2: {r.stripped_html.snippet}</p>
-                    <p>Card content 3: {r.date.raw}</p>
-                    <ModalAppTest
-                      param={10}
-                      // result: {r}
-                    />
-                  </Card>
-                  <br />
-                </div>
-              ))}
-            </div>
-          );
-        }}
-      </WithSearch>
-    </SearchProvider>
-    */
-    // {results != null ? (wasSearched = true) : (wasSearched = false)}
-
     <SearchProvider config={config}>
       <WithSearch mapContextToProps={({ results }) => ({ results })}>
         {({ results }) => {
           console.log("wasSearched");
           console.log(wasSearched);
+          //results.map((r) => modals.push(ModalAppTest(r.subject.raw)));
+          //console.log(modals[0]);
           return (
             <div className="App">
               <ErrorBoundary>
@@ -204,27 +137,63 @@ export default function App() {
                     //
 
                     <div className="App">
+                      <br />
+
                       {results.map((r) => (
                         <div key={r.id.raw}>
-                          <Card style={{ width: 3000 }}>
+                          <Card style={{ width: "auto" }}>
                             {
-                              // console.log(r) // log current email
+                              console.log(r) // log current email
                             }
-                            <h1>Email Title {r.subject.raw}</h1>
-                            <h2>Email Subtitle {r.from.raw}</h2>
-                            <p>Card content 1: {r.stripped_text.snippet}</p>
-                            <p>Card content 2: {r.stripped_html.snippet}</p>
-                            <p>Card content 3: {r.date.raw}</p>
-                            <ModalAppTest
-                              param={10}
-                              // result: {r}
+                            <h1>{r.subject.raw}</h1>
+                            <h2>{r.from.raw}</h2>
+                            <p>{r.date.raw}</p>
+                            <p>{r.stripped_text.snippet}</p>
+
+                            <Button
+                              type="primary"
+                              onClick={() => displayFullEmail(r)}
+                            >
+                              Open Email Modal
+                            </Button>
+                            <div
+                              id="container" // style={"padding"=24px}
                             />
+                            <script>
+                              var mountNode =
+                              document.getElementById('container');
+                            </script>
                           </Card>
                           <br />
                         </div>
                       ))}
                     </div>
 
+                    /*
+                    <Results
+                      view={(results) => {
+                        console.log(results);
+                        return (
+                          <>
+                            {results.map((x) => (
+                              <>
+                                <div key={x.id.raw}>
+                                  <Card style={{ width: 300 }}>
+                                    <h1>Email Title {x.subject.raw}</h1>
+                                    <h2>Email Subtitle</h2>
+                                    <p>Card content 1</p>
+                                    <p>Card content 2</p>
+                                    <p>Card content 3</p>
+                                    <ModalAppTest />
+                                  </Card>
+                                </div>
+                              </>
+                            ))}
+                          </>
+                        );
+                      }}
+                    />
+                    */
                     /*
                     <Results
                       view={(wasSearched) => {
@@ -270,6 +239,15 @@ export default function App() {
     </SearchProvider>
   );
 }
+
+export function displayFullEmail(param) {
+  console.log(param);
+  ReactDOM.render(
+    <ModalAppTest r={param} />,
+    document.getElementById("container")
+  );
+}
+
 /*
  <div>
                       <p>Body Content Start</p>
