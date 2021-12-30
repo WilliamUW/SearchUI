@@ -182,13 +182,18 @@ export default function App() {
                                 "justify-content": "space-between"
                               }}
                             >
-                              <span>This text is left aligned</span>
-                              <span>This text is right aligned</span>
+                              <span>
+                                <p>
+                                  <strong>{r.from.raw}</strong>
+                                </p>
+                              </span>
+                              <span>
+                                <p>{r.date.raw}</p>
+                              </span>
                             </p>
 
-                            <h1>{r.subject.raw}</h1>
-                            <h2>{r.from.raw}</h2>
-                            <p>{r.date.raw}</p>
+                            <p>{r.subject.raw}</p>
+
                             <p>{r.stripped_text.snippet}</p>
 
                             <Button
