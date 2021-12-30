@@ -176,6 +176,16 @@ export default function App() {
                       {results.map((r) => (
                         <div key={r.id.raw}>
                           <Card style={{ width: "auto" }}>
+                            <p
+                              style={{
+                                display: "flex",
+                                "justify-content": "space-between"
+                              }}
+                            >
+                              <span>This text is left aligned</span>
+                              <span>This text is right aligned</span>
+                            </p>
+
                             <h1>{r.subject.raw}</h1>
                             <h2>{r.from.raw}</h2>
                             <p>{r.date.raw}</p>
