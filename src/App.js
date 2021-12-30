@@ -175,8 +175,11 @@ export default function App() {
                               </span>
                             </p>
 
-                            <h3>{r.subject.snippet}</h3>
-
+                            <h3
+                              dangerouslySetInnerHTML={{
+                                __html: r.subject.snippet
+                              }}
+                            ></h3>
                             <p style={{ color: "grey" }}>
                               {r.stripped_text.snippet + "..."}
                             </p>
