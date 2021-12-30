@@ -70,8 +70,7 @@ const ModalAppTest = (r) => {
         <p>{new Date(r.date.raw).toDateString()}</p>
         <p>{r.stripped_text.snippet}</p>
       </Modal>
-      */
-  var srcHtml =
+      var srcHtml =
     "<html><div><h1>" +
     r.subject.raw +
     "</h1><h4>" +
@@ -81,6 +80,7 @@ const ModalAppTest = (r) => {
     "</p><p>" +
     r.stripped_text.snippet +
     "</p></div></html>";
+      */
 
   var bodyHtml = r.stripped_html.raw;
 
