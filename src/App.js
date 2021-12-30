@@ -184,7 +184,7 @@ export default function App() {
                             >
                               <span>
                                 <p>
-                                  <strong>{r.from.raw}</strong>
+                                  <strong>{r.from.raw.split("<")[0]}</strong>
                                 </p>
                               </span>
                               <span>
@@ -192,7 +192,9 @@ export default function App() {
                               </span>
                             </p>
 
-                            <p>{r.subject.raw}</p>
+                            <p>
+                              <strong>{r.subject.raw}</strong>
+                            </p>
 
                             <p>{r.stripped_text.snippet}</p>
 
