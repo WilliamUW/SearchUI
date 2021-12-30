@@ -95,8 +95,8 @@ const ModalAppTest = (r) => {
         onCancel={handleCancel}
       >
         <h1>{r.subject.raw}</h1>
-        <h4>{r.from.raw}</h4>
-        <p>{new Date(r.date.raw).toDateString()}</p>
+        <h4>From: {r.from.raw}</h4>
+        <p>Date: {new Date(r.date.raw).toDateString()}</p>
         <iframe
           srcDoc={bodyHtml}
           style={{ width: "35em", height: "20em" }}
