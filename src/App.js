@@ -179,7 +179,8 @@ export default function App() {
                             <p
                               style={{
                                 display: "flex",
-                                "justify-content": "space-between"
+                                "justify-content": "space-between",
+                                margin: "0"
                               }}
                             >
                               <span>
