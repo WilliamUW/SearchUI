@@ -79,6 +79,7 @@ const ModalAppTest = (r) => {
           title="Test iframe"
           id="iframe"
         ></iframe>
+        <p>{r.mailgunattachments.raw}</p>
       </Modal>
     </>
   );
