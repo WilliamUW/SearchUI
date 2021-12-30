@@ -103,8 +103,14 @@ const config = {
 console.log("Config");
 console.log(config);
 
+var displayStringLength = 100;
+
 export function innerFormat(string) {
-  return string.replace(/em/g, "mark");
+  var input = string;
+  if (input.length > displayStringLength) {
+    input = input.substring(0, displayStringLength) + "...";
+  }
+  return input.replace(/em/g, "mark");
 }
 
 export default function App() {
@@ -119,6 +125,8 @@ export default function App() {
           //console.log(modals[0]);
           console.log("Config after loading results");
           console.log(config);
+          console.log(config.searchQuery.search_fields);
+          // console.log(JSON.parse(config.searchQuery.search_fields));
           // console.log(document.getElementById("downshift-0-input").textContent)
           return (
             <div className="App">

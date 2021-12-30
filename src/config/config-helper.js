@@ -10,6 +10,7 @@ import config from "../config/engine.json";
  */
 
 var traceOn = true;
+var maxResultFieldSize = 1000;
 
 export function trace(string) {
   if (traceOn) {
@@ -109,7 +110,7 @@ export function buildSearchOptionsFromConfig() {
       acc[n] = {
         raw: {},
         snippet: {
-          size: 100,
+          size: maxResultFieldSize,
           fallback: true
         }
       };
@@ -124,7 +125,7 @@ export function buildSearchOptionsFromConfig() {
     resultFields[config.urlField] = {
       raw: {},
       snippet: {
-        size: 100,
+        size: maxResultFieldSize,
         fallback: true
       }
     };
@@ -134,7 +135,7 @@ export function buildSearchOptionsFromConfig() {
     resultFields[config.thumbnailField] = {
       raw: {},
       snippet: {
-        size: 100,
+        size: maxResultFieldSize,
         fallback: true
       }
     };
@@ -144,7 +145,7 @@ export function buildSearchOptionsFromConfig() {
     resultFields[config.titleField] = {
       raw: {},
       snippet: {
-        size: 100,
+        size: maxResultFieldSize,
         fallback: true
       }
     };
