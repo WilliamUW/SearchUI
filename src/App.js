@@ -174,7 +174,10 @@ export default function App() {
                       <br />
 
                       {results.map((r) => (
-                        <div key={r.id.raw}>
+                        <div
+                          key={r.id.raw}
+                          // onClick={() => displayFullEmail(r)}
+                        >
                           <Card style={{ width: "auto" }}>
                             <p
                               style={{
@@ -189,15 +192,15 @@ export default function App() {
                                 </p>
                               </span>
                               <span>
-                                <p>{r.date.raw}</p>
+                                <p style={{ color: "grey" }}>{r.date.raw}</p>
                               </span>
                             </p>
 
-                            <p>
-                              <strong>{r.subject.raw}</strong>
-                            </p>
+                            <h3>{r.subject.raw}</h3>
 
-                            <p>{r.stripped_text.snippet}</p>
+                            <p style={{ color: "grey" }}>
+                              {r.stripped_text.snippet + "..."}
+                            </p>
 
                             <Button
                               type="primary"
@@ -216,6 +219,9 @@ export default function App() {
                           <br />
                         </div>
                       ))}
+                      <script>
+                        var mountNode = document.getElementById('container');
+                      </script>
                     </div>
 
                     /*
