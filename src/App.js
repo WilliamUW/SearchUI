@@ -55,7 +55,7 @@ const ModalAppTest = (r) => {
     ReactDOM.render("", document.getElementById(r.id.raw));
   };
 
-  console.log(r);
+  // console.log(r);
   r = r.r;
   /*
   <Modal
@@ -137,6 +137,9 @@ export default function App() {
           console.log(wasSearched);
           //results.map((r) => modals.push(ModalAppTest(r.subject.raw)));
           //console.log(modals[0]);
+          console.log("Config after loading results");
+          console.log(config);
+          // console.log(document.getElementById("downshift-0-input").textContent)
           return (
             <div className="App">
               <ErrorBoundary>
@@ -182,21 +185,19 @@ export default function App() {
                             <p
                               style={{
                                 display: "flex",
-                                "justify-content": "space-between",
+                                justifyContent: "space-between",
                                 margin: "0"
                               }}
                             >
                               <span>
-                                <p>
-                                  <strong>{r.from.raw.split("<")[0]}</strong>
-                                </p>
+                                <strong>{r.from.snippet.split("<")[0]}</strong>
                               </span>
-                              <span>
-                                <p style={{ color: "grey" }}>{r.date.raw}</p>
+                              <span style={{ color: "grey" }}>
+                                {r.date.raw}
                               </span>
                             </p>
 
-                            <h3>{r.subject.raw}</h3>
+                            <h3>{r.subject.snippet}</h3>
 
                             <p style={{ color: "grey" }}>
                               {r.stripped_text.snippet + "..."}
