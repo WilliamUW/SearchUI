@@ -15,6 +15,9 @@ const { Meta } = Card;
 
 const innerFormat = (string) => {
   var input = string;
+  if (!input){
+    return
+  }
   input = input.replace(/ *\([^)]*\) */g, "")
   input = input.replace(/ *\([^)]*$ */g, "")
   input = input.replace(/\[.*\]/g, '')
@@ -97,7 +100,7 @@ class Item extends Component {
     
             
             
-            {r.stripped_html&&<iframe
+            {r.stripped_html&&r.stripped_html.raw&&<iframe
               srcDoc={r.stripped_html.raw.replace(/href=".+?"/g,"").replace(/d@mg.glas.vin/g, "")}
               style={{ width: "100%", height: "60vh", display: "block" }}
               title="Email Body iframe"
