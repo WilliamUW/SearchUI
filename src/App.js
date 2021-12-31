@@ -23,7 +23,7 @@ import {
   buildAutocompleteQueryConfig, // search auto complete
   buildFacetConfigFromConfig, // filters
   buildSearchOptionsFromConfig, //
-  buildSortOptionsFromConfig,
+  buildSortOptionsFromConfig, // sort
   getConfig,
   getFacetFields
 } from "./config/config-helper";
@@ -73,7 +73,6 @@ const ModalAppTest = (r) => {
         onOk={handleOk}
         onCancel={handleCancel}
         width={1000}
-        height={1000}
         centered
       >
         <p
