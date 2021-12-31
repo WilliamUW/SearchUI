@@ -30,6 +30,7 @@ import {
 
 // import { useState } from "react";
 import "antd/dist/antd.css";
+import "./additional.css";
 import { Modal, Button } from "antd";
 
 import { Card } from "antd";

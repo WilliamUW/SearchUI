@@ -49,3 +49,8 @@
     transform: scale(1);
   }
 }
+
+mark {
+  background-color: blue;
+  color: black;
+}
