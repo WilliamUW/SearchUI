@@ -38,31 +38,25 @@ import { Card } from "antd";
 
 const ModalAppTest = (r) => {
   var isModalVisible = true;
-
   /*
   const showModal = () => {
     isModalVisible = true;
   };
   */
-
-  async function handleOk() {
+  function handleOk() {
     isModalVisible = false;
     ReactDOM.render("", document.getElementById(r.id.raw));
   }
-
   const handleCancel = () => {
     isModalVisible = false;
     ReactDOM.render("", document.getElementById(r.id.raw));
   };
-
   console.log(r);
   r = r.r;
-
   var bodyHtml = "";
   if (r.body_html) {
     bodyHtml = r.body_html.raw;
   }
-
   return (
     <>
       <Modal
