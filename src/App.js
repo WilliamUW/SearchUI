@@ -53,18 +53,6 @@ const config = {
   apiConnector: connector,
   alwaysSearchOnInitialLoad: true
 };
-console.log("Config");
-console.log(config);
-
-var displayStringLength = 100;
-
-const innerFormat = (string) => {
-  var input = string;
-  if (input.length > displayStringLength) {
-    input = input.substring(0, displayStringLength) + "...";
-  }
-  return input.replace(/em/g, "mark");
-}
 
 export default function App() {
   var wasSearched = true;

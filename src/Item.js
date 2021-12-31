@@ -98,7 +98,7 @@ class Item extends Component {
             
             
             {r.stripped_html&&<iframe
-              srcDoc={r.stripped_html.raw.replace(/href=".+?"/g,"")}
+              srcDoc={r.stripped_html.raw.replace(/href=".+?"/g,"").replace(/d@mg.glas.vin/g, "")}
               style={{ width: "100%", height: "60vh", display: "block" }}
               title="Email Body iframe"
               id="iframe"
