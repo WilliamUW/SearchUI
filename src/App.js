@@ -67,7 +67,7 @@ const ModalAppTest = (r) => {
     <>
       <Modal
         id="test"
-        title="Email Modal"
+        title="Selected Email Modal"
         // style={{ width: "80em" }}
         visible={isModalVisible}
         onOk={handleOk}
@@ -110,8 +110,8 @@ const ModalAppTest = (r) => {
         ></p>
         <iframe
           srcDoc={bodyHtml}
-          style={{ width: "100%", height: "30em", display: "block" }}
-          title="Test iframe"
+          style={{ width: "100%", height: "25em", display: "block" }}
+          title="Email Body iframe"
           id="iframe"
         ></iframe>
         <p>{r.mailgunattachments ? r.mailgunattachments.raw : ""}</p>
