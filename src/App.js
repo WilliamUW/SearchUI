@@ -258,58 +258,6 @@ export default function App() {
                         var mountNode = document.getElementById('container');
                       </script>
                     </div>
-
-                    /*
-                    <Results
-                      view={(results) => {
-                        console.log(results);
-                        return (
-                          <>
-                            {results.map((x) => (
-                              <>
-                                <div key={x.id.raw}>
-                                  <Card style={{ width: 300 }}>
-                                    <h1>Email Title {x.subject.raw}</h1>
-                                    <h2>Email Subtitle</h2>
-                                    <p>Card content 1</p>
-                                    <p>Card content 2</p>
-                                    <p>Card content 3</p>
-                                  </Card>
-                                </div>
-                              </>
-                            ))}
-                          </>
-                        );
-                      }}
-                    />
-                    */
-                    /*
-                    <Results
-                      view={(wasSearched) => {
-                        console.log(wasSearched);
-                        console.log(wasSearched.children);
-                        return (
-                          <>
-                            {wasSearched.map((x) => (
-                              <>
-                                <div>
-                                  <Card style={{ width: 300 }}>
-                                    <h1>Email Title {x.subject.raw}</h1>
-                                    <h2>Email Subtitle</h2>
-                                    <p>Card content 1</p>
-                                    <p>Card content 2</p>
-                                    <p>Card content 3</p>
-                                    <ModalAppTest />
-                                  </Card>
-                                </div>
-                              </>
-                            ))}
-                          </>
-                        );
-                      }}
-                      renderResult={(wasSearched) => <>test render</>}
-                    />
-                    */
                   }
                   // Result header (e.g. "showing 1-20 out of 1037")
                   bodyHeader={
@@ -345,4 +293,56 @@ export function displayFullEmail(r) {
                       />
                       <p>Body Content End</p>
                     </div>
+                    */
+
+/*
+                    <Results
+                      view={(results) => {
+                        console.log(results);
+                        return (
+                          <>
+                            {results.map((x) => (
+                              <>
+                                <div key={x.id.raw}>
+                                  <Card style={{ width: 300 }}>
+                                    <h1>Email Title {x.subject.raw}</h1>
+                                    <h2>Email Subtitle</h2>
+                                    <p>Card content 1</p>
+                                    <p>Card content 2</p>
+                                    <p>Card content 3</p>
+                                  </Card>
+                                </div>
+                              </>
+                            ))}
+                          </>
+                        );
+                      }}
+                    />
+                    */
+/*
+                    <Results
+                      view={(wasSearched) => {
+                        console.log(wasSearched);
+                        console.log(wasSearched.children);
+                        return (
+                          <>
+                            {wasSearched.map((x) => (
+                              <>
+                                <div>
+                                  <Card style={{ width: 300 }}>
+                                    <h1>Email Title {x.subject.raw}</h1>
+                                    <h2>Email Subtitle</h2>
+                                    <p>Card content 1</p>
+                                    <p>Card content 2</p>
+                                    <p>Card content 3</p>
+                                    <ModalAppTest />
+                                  </Card>
+                                </div>
+                              </>
+                            ))}
+                          </>
+                        );
+                      }}
+                      renderResult={(wasSearched) => <>test render</>}
+                    />
                     */
