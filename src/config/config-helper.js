@@ -95,6 +95,7 @@ export function stripUnnecessaryResultFields(resultFields) {
 
 export function buildSearchOptionsFromConfig() {
   const config = getConfig();
+  console.log(config);
   const searchFields = (config.searchFields || config.fields || []).reduce(
     (acc, n) => {
       acc = acc || {};
