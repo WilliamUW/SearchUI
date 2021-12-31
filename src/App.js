@@ -177,9 +177,6 @@ export default function App() {
                           sortOptions={buildSortOptionsFromConfig()}
                         />
                       )}
-                      <br />
-                      <br />
-                      <p>Filter by Fields below!</p>
 
                       {getFacetFields().map((field) => (
                         <Facet // where all the filters are stored
