@@ -12,9 +12,10 @@ import config from "../config/engine.json";
 var traceOn = true;
 var maxResultFieldSize = 1000;
 
-export function trace(string) {
+// only prints to console if traceOn = true
+export function trace(input) {
   if (traceOn) {
-    console.log(string);
+    console.log(input);
   }
 }
 

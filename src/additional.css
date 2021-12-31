@@ -6,6 +6,9 @@ em {
   color: black;
 }
 
+iframe {
+  border: 0px;
+}
 
 .site-layout-content {
   min-height: 280px;
