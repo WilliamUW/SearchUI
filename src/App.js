@@ -44,11 +44,11 @@ const ModalAppTest = (r) => {
   };
   */
   function handleOk() {
-    isModalVisible = false;
+    //isModalVisible = false;
     ReactDOM.render("", document.getElementById(r.id.raw));
   }
   const handleCancel = () => {
-    isModalVisible = false;
+    //isModalVisible = false;
     ReactDOM.render("", document.getElementById(r.id.raw));
   };
   console.log(r);
