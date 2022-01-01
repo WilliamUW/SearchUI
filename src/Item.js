@@ -36,6 +36,11 @@ const emailFormat = (email) => {
   return email;
 };
 
+// logo source url formatter
+function logoSourceFormat(input) {
+  return "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
+}
+
 const innerFormat = (string) => {
   var input = string;
   if (!input) {
@@ -81,14 +86,7 @@ class Item extends Component {
             extra={r.date && dateFormat(r.date.snippet)}
           >
             <Meta
-              avatar={
-                <Avatar
-                  src={
-                    "https://logo.clearbit.com/" +
-                    r.from.snippet.split("@")[1].split(">")[0]
-                  }
-                />
-              }
+              avatar={<Avatar src={logoSourceFormat(r.from.snippet)} />}
               title={r.from && innerFormat(emailFormat(r.from.snippet))}
               description={r.body_plain && innerFormat(r.body_plain.snippet)}
             />
@@ -99,7 +97,6 @@ class Item extends Component {
         <Modal
           id="test"
           title={innerFormat(r.subject.snippet)}
-          // style={{ width: "80em" }}
           visible={this.state.isModalVisible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
@@ -113,7 +110,11 @@ class Item extends Component {
               margin: "0"
             }}
           >
-            {innerFormat(emailFormat(r.from.snippet))}
+            <div>
+              <Avatar src={logoSourceFormat(r.from.snippet)} />
+              {"ㅤ"}
+              {innerFormat(emailFormat(r.from.snippet))}
+            </div>
             {dateFormat(r.date.snippet)}
           </p>
           <br />
