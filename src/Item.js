@@ -7,6 +7,9 @@ import "./additional.css";
 const { Meta } = Card;
 
 const dateFormat = (input) => {
+  if (!input) {
+    return;
+  }
   var ms = Date.parse(input); // parse date string
   var dateParsed = new Date(ms);
   var options = {
@@ -27,6 +30,9 @@ const dateFormat = (input) => {
 };
 
 const emailFormat = (email) => {
+  if (!email) {
+    return;
+  }
   // console.log(email);
   // console.log(email.slice(email.length - 4));
   if (email.slice(email.length - 4) !== "&gt;") {
@@ -38,6 +44,9 @@ const emailFormat = (email) => {
 
 // logo source url formatter
 function logoSourceFormat(input) {
+  if (!input) {
+    return;
+  }
   return "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
 }
 
