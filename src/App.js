@@ -1,10 +1,13 @@
-
 import {
   ErrorBoundary,
-  Facet, Paging,
+  Facet,
+  Paging,
   //Results,
   PagingInfo,
-  ResultsPerPage, SearchBox, SearchProvider, Sorting,
+  ResultsPerPage,
+  SearchBox,
+  SearchProvider,
+  Sorting,
   WithSearch
 } from "@elastic/react-search-ui";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -12,7 +15,7 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Avatar, Card, Modal } from "antd";
 import "antd/dist/antd.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./additional.css";
 import {
   buildAutocompleteQueryConfig,
@@ -22,20 +25,9 @@ import {
   getConfig,
   getFacetFields
 } from "./config/config-helper";
-import Item from "./Item"
-
+import Item from "./Item";
 
 const { Meta } = Card;
-
-
-
-
-
-
-
-
-// make modal class
-
 
 const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
 const connector = new AppSearchAPIConnector({
@@ -60,7 +52,6 @@ export default function App() {
     <SearchProvider config={config}>
       <WithSearch mapContextToProps={({ results }) => ({ results })}>
         {({ results }) => {
-
           return (
             <div className="App">
               <ErrorBoundary>
@@ -94,12 +85,11 @@ export default function App() {
                     <div className="App">
                       <br />
 
-                      {results.map(r=>
-                      <ErrorBoundary>
-                        <Item r={r}/>
+                      {results.map((r) => (
+                        <ErrorBoundary>
+                          <Item r={r} />
                         </ErrorBoundary>
-                        )}
-
+                      ))}
                     </div>
                   }
                   // Result header (e.g. "showing 1-20 out of 1037")
@@ -119,4 +109,3 @@ export default function App() {
     </SearchProvider>
   );
 }
-
