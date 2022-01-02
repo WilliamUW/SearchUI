@@ -38,9 +38,22 @@ function removeLinksInBody(input) {
   if (!input) {
     return;
   }
-  // input = input.toString();
-  console.log("Remove Links called");
-  input = input.replace(/(?:www|https?)[^\s]+/g, "");
+  var linkSign = "ThisIsALink";
+  // console.log("Remove Links called");
+  var links = input.match(/(?:www|https?)[^\s]+/g);
+  // console.log(links);
+  var index = 0;
+  input = input.replace(/(?:www|https?)[^\s]+/g, linkSign);
+  while (links && index < links.length) {
+    var currLink = links[index];
+    input = input.replace(
+      linkSign,
+      '<a title="' + currLink + '" href="' + currLink + '">Link</a>'
+    );
+    index += 1;
+  }
+  input = input.replace(/&[^;]*;/g, "");
+  // input = input.replace(/(?:www|https?)[^\s]+/g, "");
   return input;
 }
 
@@ -105,11 +118,6 @@ class Item extends Component {
   };
   render() {
     let r = this.props.r;
-    console.log("Body plain snippet");
-    console.log(
-      r.body_plain.snippet.replace(/\n/g, "\\n").replace(/\t/, "\\t")
-    );
-    console.log("After processing");
     console.log(removeLinksInBody(r.body_plain.snippet));
     return (
       <div>
