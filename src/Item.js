@@ -81,7 +81,7 @@ function logoSourceFormat(input) {
   }
   var url = "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
   url = url.replace(/&gt;/g, "");
-  console.log(url);
+  // console.log(url);
   //console.log(result);
   return url;
 }
@@ -122,7 +122,7 @@ class Item extends Component {
   };
   render() {
     let r = this.props.r;
-    console.log(bodyPreviewFormat(r.body_plain.snippet));
+    // console.log(bodyPreviewFormat(r.body_plain.snippet));
     return (
       <div>
         <a onClick={this.showModal}>
