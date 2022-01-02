@@ -34,7 +34,7 @@ const dateFormat = (input) => {
   return dateParsed;
 };
 
-function removeLinksInBody(input) {
+function bodyPreviewFormat(input) {
   if (!input) {
     return;
   }
@@ -52,7 +52,8 @@ function removeLinksInBody(input) {
     );
     index += 1;
   }
-  input = input.replace(/&[^;]*;/g, "");
+  input = input.replace(/&[^;]*;/g, ""); // remove special characters
+  input = input.replace(/[\s]+/g, " "); // limit whitespace to one space
   // input = input.replace(/(?:www|https?)[^\s]+/g, "");
   return input;
 }
@@ -118,7 +119,7 @@ class Item extends Component {
   };
   render() {
     let r = this.props.r;
-    console.log(removeLinksInBody(r.body_plain.snippet));
+    console.log(bodyPreviewFormat(r.body_plain.snippet));
     return (
       <div>
         <a onClick={this.showModal}>
@@ -140,7 +141,7 @@ class Item extends Component {
               title={r.from && innerFormat(emailFormat(r.from.snippet))}
               description={
                 r.body_plain &&
-                innerFormat(removeLinksInBody(r.body_plain.snippet))
+                innerFormat(bodyPreviewFormat(r.body_plain.snippet))
               }
             />
           </Card>
