@@ -2,10 +2,7 @@
   "engineName": "david-003",
   "endpointBase": "https://email-us.ent.us-east-1.aws.found.io",
   "searchKey": "search-gsg8smoe6issmbasio89sbog",
-  "searchFields": [
-    "body_plain",
-    "subject"
-  ],
+  "searchFields": ["body_plain", "subject"],
   "resultFields": [
     "date",
     "attachments",

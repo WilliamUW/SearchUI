@@ -3,8 +3,12 @@ import { Avatar, Card, Modal } from "antd";
 import "antd/dist/antd.css";
 import React, { Component } from "react";
 import "./additional.css";
+import { Button, Radio } from "antd";
+import { LinkOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
+
+const defaultIconUrl = "https://logo.clearbit.com/www.somm.ai";
 
 const dateFormat = (input) => {
   if (!input) {
@@ -45,9 +49,10 @@ const emailFormat = (email) => {
 // logo source url formatter
 function logoSourceFormat(input) {
   if (!input) {
-    return;
+    return defaultIconUrl;
   }
-  return "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
+  var url = "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
+  return url;
 }
 
 const innerFormat = (string) => {
@@ -86,6 +91,7 @@ class Item extends Component {
   };
   render() {
     let r = this.props.r;
+
     return (
       <div>
         <a onClick={this.showModal}>
@@ -95,7 +101,12 @@ class Item extends Component {
             extra={r.date && dateFormat(r.date.snippet)}
           >
             <Meta
-              avatar={<Avatar src={logoSourceFormat(r.from.snippet)} />}
+              avatar={
+                <Avatar
+                  src={logoSourceFormat(r.from.snippet)}
+                  alt="From Avatar Logo"
+                />
+              }
               title={r.from && innerFormat(emailFormat(r.from.snippet))}
               description={r.body_plain && innerFormat(r.body_plain.snippet)}
             />
@@ -112,7 +123,7 @@ class Item extends Component {
           width={1000}
           centered
         >
-          <p
+          <div
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -120,12 +131,14 @@ class Item extends Component {
             }}
           >
             <div>
-              <Avatar src={logoSourceFormat(r.from.snippet)} />
-              {"ㅤ"}
-              {innerFormat(emailFormat(r.from.snippet))}
+              <Avatar
+                src={logoSourceFormat(r.from.snippet)}
+                alt="From Avatar Logo for Modal"
+              />
+              {innerFormat(emailFormat(" " + r.from.snippet))}
             </div>
             {dateFormat(r.date.snippet)}
-          </p>
+          </div>
           <br />
 
           {r.stripped_html && r.stripped_html.raw && (
@@ -136,13 +149,37 @@ class Item extends Component {
               style={{ width: "100%", height: "60vh", display: "block" }}
               title="Email Body iframe"
               id="iframe"
+              alt="iFrame for Modal"
             ></iframe>
           )}
-          <p>{r.mailgunattachments ? r.mailgunattachments.raw : ""}</p>
+          <br />
+          {showAttachment(r.mailgunattachments)}
         </Modal>
       </div>
     );
   }
+}
+
+function showAttachment(input) {
+  if (!input) {
+    // no attachment
+    return; // return nothing
+  }
+  return (
+    <div display="flex" margin="0 auto" justify-content="center">
+      <a href={"https://" + input.raw} title={"https://" + input.raw}>
+        <Button
+          type="primary"
+          shape="round"
+          icon={<LinkOutlined />}
+          size={"large"}
+          float="center"
+        >
+          {input ? input.raw : ""}
+        </Button>
+      </a>
+    </div>
+  );
 }
 
 export default Item;
