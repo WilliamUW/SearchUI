@@ -43,15 +43,7 @@ function bodyPreviewFormat(input) {
   var links = input.match(/(?:www|https?)[^\s]+/g);
   // console.log(links);
   var index = 0;
-  input = input.replace(/(?:www|https?)[^\s]+/g, linkSign);
-  while (links && index < links.length) {
-    var currLink = links[index];
-    input = input.replace(
-      linkSign,
-      '<a title="' + currLink + '" href="' + currLink + '">Link</a>'
-    );
-    index += 1;
-  }
+  input = input.replace(/(?:www|https?)[^\s]+/g, "");
   input = input.replace(/&[^;]*;/g, ""); // remove special characters
   input = input.replace(/[\s]+/g, " "); // limit whitespace to one space
   input = input.replace(/[-]+/g, "-"); // limit repeated hyphen to one
