@@ -55,6 +55,7 @@ function bodyPreviewFormat(input) {
   input = input.replace(/&[^;]*;/g, ""); // remove special characters
   input = input.replace(/[\s]+/g, " "); // limit whitespace to one space
   input = input.replace(/[-]+/g, "-"); // limit repeated hyphen to one
+  input = input.replace(/\[[^\s]+\(</, "Square");
   // input = input.replace(/(?:www|https?)[^\s]+/g, "");
   return input;
 }
@@ -68,6 +69,7 @@ const emailFormat = (email) => {
   if (email.slice(email.length - 4) !== "&gt;") {
     email += "&gt;"; // add closing bracket if not there already
   }
+  email = email.replace(/&quot;/g, ""); // remove " in email
   // console.log("Changed email: " + email);
   return email;
 };
