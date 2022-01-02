@@ -166,7 +166,7 @@ function showAttachment(input) {
     return; // return nothing
   }
   return (
-    <div display="flex" margin="0 auto" justify-content="center">
+    <div>
       <a href={"https://" + input.raw} title={"https://" + input.raw}>
         <Button
           type="primary"
