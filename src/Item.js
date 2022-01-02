@@ -52,6 +52,7 @@ function logoSourceFormat(input) {
     return defaultIconUrl;
   }
   var url = "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
+  url.replace("&gt", "");
   var result = checkURL(url);
   //console.log(url);
   //console.log(result);
