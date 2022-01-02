@@ -54,6 +54,7 @@ function bodyPreviewFormat(input) {
   }
   input = input.replace(/&[^;]*;/g, ""); // remove special characters
   input = input.replace(/[\s]+/g, " "); // limit whitespace to one space
+  input = input.replace(/[-]+/g, "-"); // limit repeated hyphen to one
   // input = input.replace(/(?:www|https?)[^\s]+/g, "");
   return input;
 }
