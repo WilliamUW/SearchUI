@@ -52,6 +52,9 @@ function logoSourceFormat(input) {
     return defaultIconUrl;
   }
   var url = "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
+  var result = checkURL(url);
+  //console.log(url);
+  //console.log(result);
   return url;
 }
 
@@ -66,6 +69,10 @@ const innerFormat = (string) => {
   input = input.replace(/d@mg.glas.vin/g, "");
   return <span dangerouslySetInnerHTML={{ __html: input }} />;
 };
+
+function checkURL(url) {
+  return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+}
 
 class Item extends Component {
   constructor(props) {
@@ -91,7 +98,6 @@ class Item extends Component {
   };
   render() {
     let r = this.props.r;
-
     return (
       <div>
         <a onClick={this.showModal}>
@@ -134,11 +140,13 @@ class Item extends Component {
               <Avatar
                 src={logoSourceFormat(r.from.snippet)}
                 alt="From Avatar Logo for Modal"
+                id={r.id.raw + "-logo"}
               />
               {innerFormat(emailFormat(" " + r.from.snippet))}
             </div>
             {dateFormat(r.date.snippet)}
           </div>
+
           <br />
 
           {r.stripped_html && r.stripped_html.raw && (
