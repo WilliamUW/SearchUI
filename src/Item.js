@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import "./additional.css";
 import { Button, Radio } from "antd";
 import { LinkOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -52,9 +53,8 @@ function logoSourceFormat(input) {
     return defaultIconUrl;
   }
   var url = "https://logo.clearbit.com/" + input.split("@")[1].split(">")[0];
-  url.replace("&gt", "");
-  var result = checkURL(url);
-  //console.log(url);
+  url.replace("&gt;", "");
+  console.log(url);
   //console.log(result);
   return url;
 }
@@ -112,7 +112,10 @@ class Item extends Component {
                 <Avatar
                   src={logoSourceFormat(r.from.snippet)}
                   alt="From Avatar Logo"
-                />
+                  icon={<UserOutlined />}
+                >
+                  U
+                </Avatar>
               }
               title={r.from && innerFormat(emailFormat(r.from.snippet))}
               description={r.body_plain && innerFormat(r.body_plain.snippet)}
@@ -133,15 +136,14 @@ class Item extends Component {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              margin: "0"
+              justifyContent: "space-between"
             }}
           >
             <div>
               <Avatar
                 src={logoSourceFormat(r.from.snippet)}
                 alt="From Avatar Logo for Modal"
-                id={r.id.raw + "-logo"}
+                icon={<UserOutlined />}
               />
               {innerFormat(emailFormat(" " + r.from.snippet))}
             </div>
