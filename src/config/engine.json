@@ -4,6 +4,7 @@
   "searchKey": "search-gsg8smoe6issmbasio89sbog",
   "searchFields": ["body_plain", "subject"],
   "resultFields": [
+    "timestamp",
     "date",
     "attachments",
     "body_plain",
@@ -15,7 +16,7 @@
     "to",
     "id"
   ],
-  "sortFields": ["date"],
+  "sortFields": ["timestamp"],
   "facets": ["from"],
   "titleField": "subject",
   "urlField": "message_url"

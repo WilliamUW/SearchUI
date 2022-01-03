@@ -38,6 +38,7 @@ function bodyPreviewFormat(input) {
   if (!input) {
     return;
   }
+  console.log("Before preview format: " + input);
   var linkSign = "ThisIsALink";
   // console.log("Remove Links called");
   var links = input.match(/(?:www|https?)[^\s]+/g);
@@ -49,6 +50,7 @@ function bodyPreviewFormat(input) {
   input = input.replace(/[-]+/g, "-"); // limit repeated hyphen to one
   input = input.replace(/\[[^\s]+\(</, "Square");
   // input = input.replace(/(?:www|https?)[^\s]+/g, "");
+  console.log("After preview format: " + input);
   return input;
 }
 
@@ -83,9 +85,20 @@ const innerFormat = (string) => {
   if (!input) {
     return;
   }
+  // remove everything between circle brackets
   input = input.replace(/ *\([^)]*\) */g, "");
-  input = input.replace(/ *\([^)]*$ */g, "");
-  input = input.replace(/\[.*\]/g, "");
+
+  // remove everything between ( and ]
+  //input = input.replace(/ *\([^)]*$ */g, "");
+
+  // remove leftover (
+  input = input.replace(/\(/g, "");
+
+  // remove everything between [ and ]
+  // input = input.replace(/\[.*\]/g, "");
+
+  input = input.replace(/\[/g, "");
+  input = input.replace(/\]/g, ""); // remove leftover square brackets
   input = input.replace(/d@mg.glas.vin/g, "");
   return <span dangerouslySetInnerHTML={{ __html: input }} />;
 };
