@@ -142,7 +142,7 @@ function siteSignOut() {
 
 class Home extends Component {
   render() {
-    if (signedIn) {
+    if (1) {
       console.log(currentUser);
       return (
         <>
@@ -175,7 +175,7 @@ class Home extends Component {
               <a
                 id="signInButton"
                 href="#"
-                onclick={() => signIn()}
+                onClick={() => signIn()}
                 // disabled={signedIn === true}
               >
                 Sign In
@@ -197,7 +197,11 @@ class Home extends Component {
             <Menu.Item key="7" id="userInfo"></Menu.Item>
             <Menu.Item key="8" id="userPhoto">
               <img
-                src={currentUser ? currentUser.photoURL : ""}
+                src={
+                  currentUser
+                    ? currentUser.photoURL
+                    : "https://iupac.org/wp-content/uploads/2018/05/default-avatar.png"
+                }
                 alt="userPhoto"
                 width="30em"
                 style={{ "border-radius": "50%" }}
@@ -205,69 +209,7 @@ class Home extends Component {
             </Menu.Item>
           </Menu>
 
-          <App />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <Menu theme="light" mode="horizontal">
-            <Menu.Item key="3">
-              <a
-                href="https://somm.ai"
-                title="somm.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  style={{ zoom: 0.5 }}
-                  src="https://somm.ai/images/somm.png"
-                  alt="somm.ai logo"
-                ></img>
-              </a>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <a
-                href="/"
-                title="Somm.ai Email Search Home"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Email Search Home
-              </a>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <a
-                id="signInButton"
-                onClick={() => signIn()}
-                href="#"
-                // disabled={signedIn === true}
-              >
-                Sign In
-              </a>
-            </Menu.Item>
-            <Menu.Item key="5">
-              <a
-                id="signOutButton"
-                href="#"
-                onClick={() => siteSignOut()}
-                // disabled={signedIn === false}
-              >
-                Sign Out
-              </a>
-            </Menu.Item>
-            <Menu.Item key="6" id="signInStatus">
-              {/* signedIn ? signedInMessage : signedOutMessage */}
-            </Menu.Item>
-            <Menu.Item key="7" id="userInfo"></Menu.Item>
-            <Menu.Item key="8" id="userPhoto">
-              <img
-                src="https://iupac.org/wp-content/uploads/2018/05/default-avatar.png"
-                width="30em"
-                style={{ "border-radius": "50%" }}
-              />
-            </Menu.Item>
-          </Menu>
+          {signedIn ? <App /> : ""}
         </>
       );
     }
