@@ -13,8 +13,7 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-modal": "3.14.4",
-    "react-scripts": "^3.4.1",
-    "yarn": "1.22.17"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -36,9 +35,7 @@
     "rewire": "^4.0.1"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "browserslist": [
     ">0.2%",
