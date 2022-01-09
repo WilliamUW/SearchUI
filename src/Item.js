@@ -38,7 +38,7 @@ function bodyPreviewFormat(input) {
   if (!input) {
     return;
   }
-  console.log("Before preview format: " + input);
+  // console.log("Before preview format: " + input);
   var linkSign = "ThisIsALink";
   // console.log("Remove Links called");
   var links = input.match(/(?:www|https?)[^\s]+/g);
@@ -50,7 +50,7 @@ function bodyPreviewFormat(input) {
   input = input.replace(/[-]+/g, "-"); // limit repeated hyphen to one
   input = input.replace(/\[[^\s]+\(</, "Square");
   // input = input.replace(/(?:www|https?)[^\s]+/g, "");
-  console.log("After preview format: " + input);
+  // console.log("After preview format: " + input);
   return input;
 }
 

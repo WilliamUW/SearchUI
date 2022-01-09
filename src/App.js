@@ -53,7 +53,11 @@ export default function App() {
       <WithSearch mapContextToProps={({ results }) => ({ results })}>
         {({ results }) => {
           return (
-            <div className="App">
+            <div
+              className="App"
+              id="reactAppDiv"
+              // style={{ visibility: "hidden" }}
+            >
               <ErrorBoundary>
                 <Layout
                   header={<SearchBox autocompleteSuggestions={true} />}
