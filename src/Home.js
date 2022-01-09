@@ -46,9 +46,11 @@ export function renderHome() {
 
 export function signIn() {
   if (signedIn !== true) {
+    /*
     document.getElementById(
       "signInStatus"
     ).innerHTML = currentlySigningInMessage;
+    */
 
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -67,12 +69,14 @@ export function signIn() {
         // document.getElementById("appDiv").style.visibility = "visible";
 
         renderHome();
+        document.getElementById("userInfo").innerHTML = "Hello " + user.email;
+        /*
         document.getElementById("signInStatus").innerHTML = signedInMessage;
-        document.getElementById("userInfo").innerHTML =
-          "Hello " + user.displayName + ": " + user.email;
+        
         if (document.getElementById("userPhoto")) {
           document.getElementById("userPhoto").src = user.photoURL;
         }
+        */
         alert("Sign in successful.");
       })
       .catch((error) => {
@@ -108,17 +112,18 @@ export function signIn() {
 
 function siteSignOut() {
   if (signedIn !== false) {
+    /*
     document.getElementById(
       "signInStatus"
     ).innerHTML = currentlySigningOutMessage;
-
+*/
     signOut(auth)
       .then(() => {
         // Sign-out successful.
         signedIn = false;
 
         renderHome();
-        document.getElementById("signInStatus").innerHTML = signedOutMessage;
+        //document.getElementById("signInStatus").innerHTML = signedOutMessage;
         document.getElementById("userInfo").innerHTML = "You have signed out.";
         console.log("Sign out success");
       })
@@ -186,7 +191,7 @@ class Home extends Component {
               </button>
             </Menu.Item>
             <Menu.Item key="6" id="signInStatus">
-              {signedIn ? signedInMessage : signedOutMessage}
+              {/* signedIn ? signedInMessage : signedOutMessage*/}
             </Menu.Item>
             <Menu.Item key="7" id="userInfo"></Menu.Item>
             <Menu.Item key="8" id="userPhoto">
@@ -246,7 +251,7 @@ class Home extends Component {
               </button>
             </Menu.Item>
             <Menu.Item key="6" id="signInStatus">
-              {signedIn ? signedInMessage : signedOutMessage}
+              {/* signedIn ? signedInMessage : signedOutMessage */}
             </Menu.Item>
             <Menu.Item key="7" id="userInfo"></Menu.Item>
             <Menu.Item key="8" id="userPhoto">
