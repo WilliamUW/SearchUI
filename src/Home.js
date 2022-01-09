@@ -191,10 +191,11 @@ class Home extends Component {
                 Sign Out
               </a>
             </Menu.Item>
-            <Menu.Item key="6" id="signInStatus">
-              {/* signedIn ? signedInMessage : signedOutMessage*/}
+            <Menu.Item key="7" id="userInfo">
+              {signedIn === false
+                ? "Please Sign In to access the Retail Emails!"
+                : ""}
             </Menu.Item>
-            <Menu.Item key="7" id="userInfo"></Menu.Item>
             <Menu.Item key="8" id="userPhoto">
               <img
                 src={
