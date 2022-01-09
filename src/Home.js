@@ -204,7 +204,7 @@ class Home extends Component {
                 }
                 alt="userPhoto"
                 width="30em"
-                style={{ "border-radius": "50%" }}
+                style={{ borderRadius: "50%" }}
               />
             </Menu.Item>
           </Menu>
