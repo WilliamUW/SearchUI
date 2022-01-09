@@ -73,10 +73,11 @@ export function signIn() {
         /*
         document.getElementById("signInStatus").innerHTML = signedInMessage;
         
+        
+        */
         if (document.getElementById("userPhoto")) {
           document.getElementById("userPhoto").src = user.photoURL;
         }
-        */
         alert("Sign in successful.");
       })
       .catch((error) => {
@@ -195,7 +196,12 @@ class Home extends Component {
             </Menu.Item>
             <Menu.Item key="7" id="userInfo"></Menu.Item>
             <Menu.Item key="8" id="userPhoto">
-              <img alt="userPhoto" />
+              <img
+                src={currentUser ? currentUser.photoURL : ""}
+                alt="userPhoto"
+                width="30em"
+                style={{ "border-radius": "50%" }}
+              />
             </Menu.Item>
           </Menu>
 
@@ -258,6 +264,7 @@ class Home extends Component {
               <img
                 src="https://iupac.org/wp-content/uploads/2018/05/default-avatar.png"
                 width="30em"
+                style={{ "border-radius": "50%" }}
               />
             </Menu.Item>
           </Menu>

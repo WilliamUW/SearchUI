@@ -1,5 +1,10 @@
 /* additional css elements put here */
 
+.accountIcon {
+  width: 30em;
+  border-radius: 50%;
+}
+
 /* highlight settings */
 em {
   background-color: yellow;
