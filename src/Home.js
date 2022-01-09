@@ -172,24 +172,24 @@ class Home extends Component {
               </a>
             </Menu.Item>
             <Menu.Item key="4">
-              <button
+              <a
                 id="signInButton"
-                onClick={() => signIn()}
-                class="sui-search-box__submit"
+                href="#"
+                onclick={() => signIn()}
                 // disabled={signedIn === true}
               >
                 Sign In
-              </button>
+              </a>
             </Menu.Item>
             <Menu.Item key="5">
-              <button
+              <a
                 id="signOutButton"
-                class="sui-search-box__submit"
+                href="#"
                 onClick={() => siteSignOut()}
                 // disabled={signedIn === false}
               >
                 Sign Out
-              </button>
+              </a>
             </Menu.Item>
             <Menu.Item key="6" id="signInStatus">
               {/* signedIn ? signedInMessage : signedOutMessage*/}
@@ -237,24 +237,24 @@ class Home extends Component {
               </a>
             </Menu.Item>
             <Menu.Item key="4">
-              <button
+              <a
                 id="signInButton"
                 onClick={() => signIn()}
-                className="sui-search-box__submit"
+                href="#"
                 // disabled={signedIn === true}
               >
                 Sign In
-              </button>
+              </a>
             </Menu.Item>
             <Menu.Item key="5">
-              <button
+              <a
                 id="signOutButton"
-                className="sui-search-box__submit"
+                href="#"
                 onClick={() => siteSignOut()}
                 // disabled={signedIn === false}
               >
                 Sign Out
-              </button>
+              </a>
             </Menu.Item>
             <Menu.Item key="6" id="signInStatus">
               {/* signedIn ? signedInMessage : signedOutMessage */}
