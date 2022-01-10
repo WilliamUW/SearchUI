@@ -1,8 +1,8 @@
+import { Button, Form, Input } from "antd";
+import "antd/dist/antd.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import "antd/dist/antd.css";
-import "./index.css";
-import { Form, Input, Button, Checkbox } from "antd";
+import "./styles/index.css";
 
 const Demo = () => {
   const onFinish = (values) => {

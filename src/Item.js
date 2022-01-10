@@ -1,11 +1,9 @@
+import { LinkOutlined, UserOutlined } from "@ant-design/icons";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import { Avatar, Card, Modal } from "antd";
+import { Avatar, Button, Card, Modal } from "antd";
 import "antd/dist/antd.css";
 import React, { Component } from "react";
-import "./additional.css";
-import { Button, Radio } from "antd";
-import { LinkOutlined } from "@ant-design/icons";
-import { UserOutlined } from "@ant-design/icons";
+import "./styles/additional.css";
 
 const { Meta } = Card;
 

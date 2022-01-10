@@ -2,7 +2,6 @@ import {
   ErrorBoundary,
   Facet,
   Paging,
-  //Results,
   PagingInfo,
   ResultsPerPage,
   SearchBox,
@@ -13,10 +12,9 @@ import {
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
-import { Avatar, Card, Modal } from "antd";
+import { Card } from "antd";
 import "antd/dist/antd.css";
-import React, { useState } from "react";
-import "./additional.css";
+import React from "react";
 import {
   buildAutocompleteQueryConfig,
   buildFacetConfigFromConfig,
@@ -26,6 +24,9 @@ import {
   getFacetFields
 } from "./config/config-helper";
 import Item from "./Item";
+import "./styles/additional.css";
+import "./styles/Dashboard.css";
+
 
 const { Meta } = Card;
 
@@ -46,7 +47,12 @@ const config = {
   alwaysSearchOnInitialLoad: true
 };
 
+
+
 export default function App() {
+
+
+
   var wasSearched = true;
   return (
     <SearchProvider config={config}>
