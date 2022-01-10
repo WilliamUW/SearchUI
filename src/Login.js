@@ -34,7 +34,7 @@ function Login() {
 
       <div className="login__container" style={{maxWidth:"400px"}}>
       Somm.ai Retail is a BETA product that helps you keep 
-      track of your and your competitors wine in email offers. 
+      track of your and your competitors' wine in email offers. 
       It is our first retail product. Check it out!
       <br/>
       <br/>
