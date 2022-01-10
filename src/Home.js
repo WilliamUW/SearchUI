@@ -469,7 +469,17 @@ class Home extends Component {
           </Menu.Item>
         </Menu>
 
-        {signedIn ? <App /> : "Please Sign In to access Retail Emails!"}
+        {signedIn ? (
+          <App />
+        ) : (
+          <>
+            <br />
+            <br />
+            <h4>
+              <center>Please Sign In to access Retail Emails!</center>
+            </h4>
+          </>
+        )}
       </>
     );
   }
