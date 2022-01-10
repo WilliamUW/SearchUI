@@ -13,7 +13,7 @@ const signInWithEmailOnly = async (email) => {
   try {
     await auth.sendSignInLinkToEmail(email,  {
       // Your redirect URL
-      url: 'http://localhost:3000', 
+      url: 'https://retail.somm.ai', 
       handleCodeInApp: true,
     });
     alert("An authentication email has been sent to your email!");
