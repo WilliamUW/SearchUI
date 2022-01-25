@@ -12,7 +12,7 @@ import {
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
-import { Card } from "antd";
+import { Card, Spin } from "antd";
 import "antd/dist/antd.css";
 import React from "react";
 import {
@@ -56,17 +56,37 @@ export default function App() {
   var wasSearched = true;
   return (
     <SearchProvider config={config}>
-      <WithSearch mapContextToProps={({ results }) => ({ results })}>
-        {({ results }) => {
+      <WithSearch mapContextToProps={({ results, isLoading }) => ({ results, isLoading })}>
+        {({ results, isLoading }) => {
+          console.log("isLoading: " + isLoading);
           return (
             <div
               className="App"
               id="reactAppDiv"
-              // style={{ visibility: "hidden" }}
+            // style={{ visibility: "hidden" }}
             >
               <ErrorBoundary>
                 <Layout
-                  header={<SearchBox autocompleteSuggestions={true} />}
+                  header={<SearchBox inputView={({ getAutocomplete, getInputProps, getButtonProps }) => (
+                    <>
+                      <div className="sui-search-box__wrapper">
+                        <input
+                          {...getInputProps({
+                            placeholder: "Type here to search!"
+                          })}
+                        />
+                        {getAutocomplete()}
+                      </div>
+                      <Spin spinning={isLoading}>
+                        <input
+                          {...getButtonProps({
+                            value: (isLoading ? "Search" : "Search"),
+                          })}
+                        />
+                      </Spin>
+
+                    </>
+                  )} autocompleteSuggestions={true} />}
                   sideContent={
                     <div>
                       {wasSearched && (
