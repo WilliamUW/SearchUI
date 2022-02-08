@@ -1,6 +1,9 @@
 {
   "name": "working-somm-ui-firebase-changes",
   "version": "1.2.0",
+  "engines": {
+    "node": "14.x"
+  },
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
