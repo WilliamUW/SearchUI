@@ -182,9 +182,9 @@ class Item extends Component {
 
           <br />
 
-          {r.stripped_html && r.stripped_html.raw && (
+          {r.body_html && r.body_html.raw && (
             <iframe
-              srcDoc={r.stripped_html.raw
+              srcDoc={r.body_html.raw
                 .replace(/href=".+?"/g, "")
                 .replace(/d@mg.glas.vin/g, "")}
               style={{ width: "100%", height: "60vh", display: "block" }}
