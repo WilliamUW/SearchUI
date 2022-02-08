@@ -175,7 +175,7 @@ class Item extends Component {
                 alt="From Avatar Logo for Modal"
                 icon={<UserOutlined />}
               />
-              {innerFormat(emailFormat(" " + r.from.snippet))}
+              {innerFormat(emailFormat("&nbsp&nbsp&nbsp" + r.from.snippet))}
             </div>
             {dateFormat(r.date.snippet)}
           </div>
