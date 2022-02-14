@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { auth, signInWithEmailOnly, signInWithGoogle, confirmSignIn } from "./firebase2";
 import { useAuthState } from "react-firebase-hooks/auth";
+import firebase from 'firebase';
 import "./styles/Login.css";
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState(
     window.localStorage.getItem("emailForSignIn") || ""
   );
@@ -21,7 +22,9 @@ function Login() {
       // maybe trigger a loading screen
       return;
     }
-    if (user) history.replace("/dashboard");
+    if (user) {
+      history.replace("/dashboard");
+    }
   }, [user, loading]);
 
   return (

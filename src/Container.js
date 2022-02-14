@@ -1,25 +1,34 @@
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import { Layout, Menu, Avatar, Image } from 'antd';
 import "antd/dist/antd.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router-dom";
 import Main from './App';
 import { auth, logout } from "./firebase2";
 import "./styles/additional.css";
 import "./styles/Dashboard.css";
+import firebase from 'firebase'; 
 
 const { Header, Content, Footer } = Layout;
   
   
-  export default function App() {
+  export default function App(props) {
   
     const history = useHistory();
     const [user, loading, error] = useAuthState(auth);
+    const [isPro, setIsPro] = useState();
   
     useEffect(() => {
       if (loading) return;
       if (!user) return history.replace("/");
+      firebase
+        .database()
+        .ref(`/users/${user.uid}/pro-membership/active`)
+        .once("value")
+        .then(snapshot => {
+          setIsPro(snapshot.val());
+      });
     }, [user, loading]);
   
     return (
@@ -41,9 +50,15 @@ const { Header, Content, Footer } = Layout;
           </Menu.Item>
           </Menu>
         </Header>
-        <Content style={{ padding: '0 50px' }}>
-        <Main />
+        <Content style={{ padding: '0 50px',filter: isPro?"none":'blur(4px)', pointerEvents: isPro?'auto':'none'}}>
+          <Main />
         </Content>
+        {isPro?null:
+        <Content>
+          <div className="free">
+            <p className="free-text">Make a Somm.ai Pro account to see results!</p>
+          </div>
+        </Content>}
         <Footer style={{ textAlign: 'center' }}>Somm.ai ©2022</Footer>
       </Layout>
         

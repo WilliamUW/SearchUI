@@ -40,3 +40,27 @@ button:disabled {
   float: right;
   margin: 16px 0 16px 24px;
 }
+
+.free {
+  pointer-events: 'auto';
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  /* border: solid black; */
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10vh; */
+  /* margin-left: -10vw; */
+  /* width: 100px;
+  height: 100px; */
+}
+
+.free-text {
+  pointer-events: 'auto';
+  font-weight: bolder;
+  font-size: 20px;
+}

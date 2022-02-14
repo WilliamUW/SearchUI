@@ -51,7 +51,7 @@ const config = {
 
 export default function App() {
 
-
+  
 
   var wasSearched = true;
   return (
