@@ -64,3 +64,28 @@ button:disabled {
   font-weight: bolder;
   font-size: 20px;
 }
+
+.button {
+  display: inline-block;
+  padding: 15px 20px;
+  border-radius: 3px;
+  font-size: 15px;
+  box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+  text-decoration: none !important;
+  margin-right: 5vw;  
+  white-space: nowrap;
+  border: none;
+  -webkit-appearance: none;
+  cursor: pointer !important;
+}
+
+.schedule {
+  background-color: #333;
+  color: #fff !important;
+}
+
+.chat {
+  color: #000;
+  background: #fff;
+  border: #000;
+}

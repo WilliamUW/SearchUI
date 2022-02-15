@@ -35,11 +35,11 @@ const { Header, Content, Footer } = Layout;
         <Layout className="layout">
         <Header>
           <a target="_blank" href="https://somm.ai" className="logo" ><img style={{
-  float: "left",
-  width: "120px",
-  height: "30px",
-  margin: "16px 24px 16px 0",
-}} src="https://somm.ai/images/somm.png"/></a>
+            float: "left",
+            width: "120px",
+            height: "30px",
+            margin: "16px 24px 16px 0",
+          }} src="https://somm.ai/images/somm.png"/></a>
           <Menu theme="dark" mode="horizontal">
           <Menu.Item key={1}>Home</Menu.Item>
           <Menu.Item key={3} onClick={logout} >Logout</Menu.Item>
@@ -57,6 +57,14 @@ const { Header, Content, Footer } = Layout;
         <Content>
           <div className="free">
             <p className="free-text">Make a Somm.ai Pro account to see results!</p>
+            <div>
+              <a href="https://pro.somm.ai/meetings/davidxmkong" target="_blank" className="button schedule">
+                <span> Schedule a Demo </span>
+              </a>
+              <div onClick={() => window.Intercom("show")} className="button chat">
+                <span> Chat with Us </span>
+              </div>
+            </div>
           </div>
         </Content>}
         <Footer style={{ textAlign: 'center' }}>Somm.ai ©2022</Footer>
