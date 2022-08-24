@@ -1,6 +1,10 @@
+## Somm.ai Wine Documents Search UI
+
 A client-facing database Search UI using Elastic API, React, Javascript that stores over 26,000 documents from wine suppliers globally.
 
 Pulls wine lists search data from Elastic.co engine.
+
+---
 
 <p align="center"><img src="https://github.com/elastic/app-search-reference-ui-react/blob/master/logo-app-search.png?raw=true" alt="Elastic App Search Logo"></p>
 
